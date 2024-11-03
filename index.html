@@ -229,6 +229,128 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/11/04/%E5%86%8D%E6%8E%A2GOT-PLT%E5%8F%8A%E5%BB%B6%E8%BF%9F%E7%BB%91%E5%AE%9A/" target="_self">
+          再探GOT&amp;PLT及延迟绑定
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/11/04/%E5%86%8D%E6%8E%A2GOT-PLT%E5%8F%8A%E5%BB%B6%E8%BF%9F%E7%BB%91%E5%AE%9A/" target="_self">
+        <div>
+          之前刚学完GOT&amp;PLT及延迟绑定，转头用的时候就感觉变得有点陌生，看来还是得把详细的过程和分析总结写下来呀。 先挖个坑，有空就写
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-11-04 00:28" pubdate>
+              2024-11-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/pwn/" class="category-chain-item">pwn</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%A8%8B%E5%BA%8F/">#程序</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/11/04/ret2libc/" target="_self">
+          ret2libc
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/11/04/ret2libc/" target="_self">
+        <div>
+          什么样的题是ret2libc，这类题该怎么做？ 程序的特征是：能进行栈溢出，没有system函数，也没有&quot;/bin/sh&quot;参数无法进行常规的ret2textret2libc的关键是获取libc的版本，所以需要获得libc.so中函数的偏移量，所以需要一个输出函数，我们才能获取到 前置知识：libc中有system函数，而libc.so动态偏移链接库中的函数之间的相对偏移是固定的
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-11-04 00:17" pubdate>
+              2024-11-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/pwn/" class="category-chain-item">pwn</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/ret2xx/">#ret2xx</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/11/04/python%E8%AF%AD%E6%B3%95%E4%B9%8B%E5%AD%97%E5%85%B8/" target="_self">
           python语法之字典
         </a>
@@ -245,7 +367,7 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-11-04 00:03" pubdate>
+            <time datetime="2024-11-04 00:13" pubdate>
               2024-11-04
             </time>
           </div>
@@ -290,39 +412,6 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/11/03/ret2libc/" target="_self">
-          
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/11/03/ret2libc/" target="_self">
-        <div>
-          什么样的题是ret2libc，这类题该怎么做？ 程序的特征是：能进行栈溢出，没有system函数，也没有&quot;/bin/sh&quot;参数无法进行常规的ret2text 前置知识：libc中有system函数，而libc.so中动态偏移链接库中的函数之间的相对偏移是固定的 ALSR保护不会随机内存地址的后12位（后3个字节） pwntools基本语法：elf.got()返回的是.got中函
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-11-03 23:16" pubdate>
-              2024-11-03
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
         <a href="/2024/11/01/puts%E5%87%BD%E6%95%B0/" target="_self">
           puts函数
         </a>
@@ -355,7 +444,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/glibc/" class="category-chain-item">glibc</a>
+  <a href="/categories/pwn/" class="category-chain-item">pwn</a>
   
   
 
@@ -455,7 +544,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/10/30/obsidian-hexo%E6%96%B9%E6%A1%88%E8%A7%A3%E5%86%B3%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/" target="_self">
         <div>
-          建立了一个博客后遇到的第一个问题就是hexo上的图片显示问题
+          建立博客后遇到的第一个问题就是hexo上的图片显示问题  想到一种考虑，把图片全都放在一个文件夹里试试挖个坑有空试试
         </div>
       </a>
 

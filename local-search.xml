@@ -4,6 +4,56 @@
   
   
   <entry>
+    <title>再探GOT&amp;PLT及延迟绑定</title>
+    <link href="/2024/11/04/%E5%86%8D%E6%8E%A2GOT-PLT%E5%8F%8A%E5%BB%B6%E8%BF%9F%E7%BB%91%E5%AE%9A/"/>
+    <url>/2024/11/04/%E5%86%8D%E6%8E%A2GOT-PLT%E5%8F%8A%E5%BB%B6%E8%BF%9F%E7%BB%91%E5%AE%9A/</url>
+    
+    <content type="html"><![CDATA[<p>之前刚学完GOT&amp;PLT及延迟绑定，转头用的时候就感觉变得有点陌生，<br>看来还是得把详细的过程和分析总结写下来呀。</p><p>先挖个坑，有空就写</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>pwn</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>程序</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>ret2libc</title>
+    <link href="/2024/11/04/ret2libc/"/>
+    <url>/2024/11/04/ret2libc/</url>
+    
+    <content type="html"><![CDATA[<p>什么样的题是ret2libc，这类题该怎么做？</p><p>程序的特征是：<br><strong>能</strong>进行栈<strong>溢出</strong>，没有<code>system</code>函数，也没有<code>&quot;/bin/sh&quot;</code>参数<br>无法进行常规的ret2text<br>ret2libc的关键是获取libc的版本，所以需要获得<code>libc.so</code>中函数的偏移量，<br>所以<strong>需要一个输出函数</strong>，我们才能获取到</p><p>前置知识：<br>libc中有<code>system</code>函数，而<code>libc.so</code>动态偏移链接库中的函数之间的相对偏移是固定的</p><p>ALSR保护不会随机内存地址的后12位（后3个字节）</p><p><code>pwntools</code>基本语法：<br><code>elf.got()</code>返回的是<code>.got</code>中函数 相对plt基地址的偏移量<br><code>elf.plt()</code>返回的是<code>.plt</code>中函数 相对got基地址的偏移量</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>pwn</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>ret2xx</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>python语法之字典</title>
     <link href="/2024/11/04/python%E8%AF%AD%E6%B3%95%E4%B9%8B%E5%AD%97%E5%85%B8/"/>
     <url>/2024/11/04/python%E8%AF%AD%E6%B3%95%E4%B9%8B%E5%AD%97%E5%85%B8/</url>
@@ -29,19 +79,6 @@
   
   
   <entry>
-    <title></title>
-    <link href="/2024/11/03/ret2libc/"/>
-    <url>/2024/11/03/ret2libc/</url>
-    
-    <content type="html"><![CDATA[<p>什么样的题是ret2libc，这类题该怎么做？</p><p>程序的特征是：<br><strong>能</strong>进行栈<strong>溢出</strong>，没有<code>system</code>函数，也没有<code>&quot;/bin/sh&quot;</code>参数<br>无法进行常规的ret2text</p><p>前置知识：<br>libc中有<code>system</code>函数，而<code>libc.so</code>中动态偏移链接库中的函数之间的相对偏移是固定的</p><p>ALSR保护不会随机内存地址的后12位（后3个字节）</p><p><code>pwntools</code>基本语法：<br><code>elf.got()</code>返回的是<code>.got</code>中函数 相对plt基地址的偏移量<br><code>elf.plt()</code>返回的是<code>.plt</code>中函数 相对got基地址的偏移量</p>]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>puts函数</title>
     <link href="/2024/11/01/puts%E5%87%BD%E6%95%B0/"/>
     <url>/2024/11/01/puts%E5%87%BD%E6%95%B0/</url>
@@ -51,7 +88,7 @@
     
     <categories>
       
-      <category>glibc</category>
+      <category>pwn</category>
       
     </categories>
     
@@ -98,7 +135,7 @@
     <link href="/2024/10/30/obsidian-hexo%E6%96%B9%E6%A1%88%E8%A7%A3%E5%86%B3%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/"/>
     <url>/2024/10/30/obsidian-hexo%E6%96%B9%E6%A1%88%E8%A7%A3%E5%86%B3%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/</url>
     
-    <content type="html"><![CDATA[<p>建立了一个博客后遇到的第一个问题就是hexo上的图片显示问题</p>]]></content>
+    <content type="html"><![CDATA[<p>建立博客后遇到的第一个问题就是hexo上的图片显示问题</p><hr><p>想到一种考虑，把图片全都放在一个文件夹里试试<br>挖个坑<br>有空试试</p>]]></content>
     
     
     
