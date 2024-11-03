@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>python语法之字典</title>
+    <link href="/2024/11/04/python%E8%AF%AD%E6%B3%95%E4%B9%8B%E5%AD%97%E5%85%B8/"/>
+    <url>/2024/11/04/python%E8%AF%AD%E6%B3%95%E4%B9%8B%E5%AD%97%E5%85%B8/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>python</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>python</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title></title>
+    <link href="/2024/11/03/ret2libc/"/>
+    <url>/2024/11/03/ret2libc/</url>
+    
+    <content type="html"><![CDATA[<p>什么样的题是ret2libc，这类题该怎么做？</p><p>程序的特征是：<br><strong>能</strong>进行栈<strong>溢出</strong>，没有<code>system</code>函数，也没有<code>&quot;/bin/sh&quot;</code>参数<br>无法进行常规的ret2text</p><p>前置知识：<br>libc中有<code>system</code>函数，而<code>libc.so</code>中动态偏移链接库中的函数之间的相对偏移是固定的</p><p>ALSR保护不会随机内存地址的后12位（后3个字节）</p><p><code>pwntools</code>基本语法：<br><code>elf.got()</code>返回的是<code>.got</code>中函数 相对plt基地址的偏移量<br><code>elf.plt()</code>返回的是<code>.plt</code>中函数 相对got基地址的偏移量</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>puts函数</title>
     <link href="/2024/11/01/puts%E5%87%BD%E6%95%B0/"/>
     <url>/2024/11/01/puts%E5%87%BD%E6%95%B0/</url>
