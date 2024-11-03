@@ -33,7 +33,7 @@
     <link href="/2024/11/04/ret2libc/"/>
     <url>/2024/11/04/ret2libc/</url>
     
-    <content type="html"><![CDATA[<p>什么样的题是ret2libc，这类题该怎么做？</p><p>程序的特征是：<br><strong>能</strong>进行栈<strong>溢出</strong>，没有<code>system</code>函数，也没有<code>&quot;/bin/sh&quot;</code>参数<br>无法进行常规的ret2text<br>ret2libc的关键是获取libc的版本，所以需要获得<code>libc.so</code>中函数的偏移量，<br>所以<strong>需要一个输出函数</strong>，我们才能获取到</p><p>前置知识：<br>libc中有<code>system</code>函数，而<code>libc.so</code>动态偏移链接库中的函数之间的相对偏移是固定的</p><p>ALSR保护不会随机内存地址的后12位（后3个字节）</p><p><code>pwntools</code>基本语法：<br><code>elf.got()</code>返回的是<code>.got</code>中函数 相对plt基地址的偏移量<br><code>elf.plt()</code>返回的是<code>.plt</code>中函数 相对got基地址的偏移量</p>]]></content>
+    <content type="html"><![CDATA[<h3 id="什么样的题是ret2libc，这类题该怎么做？"><a href="#什么样的题是ret2libc，这类题该怎么做？" class="headerlink" title="什么样的题是ret2libc，这类题该怎么做？"></a>什么样的题是ret2libc，这类题该怎么做？</h3><p>程序的特征是：<br><strong>能</strong>进行栈<strong>溢出</strong>，没有<code>system</code>函数，也没有<code>&quot;/bin/sh&quot;</code>参数<br>无法进行常规的ret2text<br>ret2libc的关键是获取libc的版本，所以需要获得<code>libc.so</code>中函数的偏移量，<br>所以<strong>需要</strong>一个<strong>输出函数</strong>，<code>.got.plt</code>中需要有<strong>libc中的函数</strong>，我们才能获取到libc中函数的<strong>真实地址</strong></p><p>从而利用<strong>LibcSearcher</strong>确定libc版本</p><hr><p>LibcSearcher原理？<br>基地址范围？</p><hr><p>前置知识：<br>libc中有<code>system</code>函数，而<code>libc.so</code>动态偏移链接库中的函数之间的相对偏移是固定的</p><p>ALSR保护不会随机内存地址的后12位（后3个字节）</p><p><code>pwntools</code>基本语法：<br><code>elf.got()</code>返回的是<code>.got</code>中函数 相对plt基地址的偏移量<br><code>elf.plt()</code>返回的是<code>.plt</code>中函数 相对got基地址的偏移量</p>]]></content>
     
     
     <categories>

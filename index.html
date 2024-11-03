@@ -298,7 +298,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/11/04/ret2libc/" target="_self">
         <div>
-          什么样的题是ret2libc，这类题该怎么做？ 程序的特征是：能进行栈溢出，没有system函数，也没有&quot;/bin/sh&quot;参数无法进行常规的ret2textret2libc的关键是获取libc的版本，所以需要获得libc.so中函数的偏移量，所以需要一个输出函数，我们才能获取到 前置知识：libc中有system函数，而libc.so动态偏移链接库中的函数之间的相对偏移是固定的
+          什么样的题是ret2libc，这类题该怎么做？程序的特征是：能进行栈溢出，没有system函数，也没有&quot;/bin/sh&quot;参数无法进行常规的ret2textret2libc的关键是获取libc的版本，所以需要获得libc.so中函数的偏移量，所以需要一个输出函数，.got.plt中需要有libc中的函数，我们才能获取到libc中函数的真实地址 从而利用LibcSearcher确定
         </div>
       </a>
 
