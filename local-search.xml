@@ -8,7 +8,7 @@
     <link href="/2024/11/01/puts%E5%87%BD%E6%95%B0/"/>
     <url>/2024/11/01/puts%E5%87%BD%E6%95%B0/</url>
     
-    <content type="html"><![CDATA[<p>做了一个赣ctf上的题，没想到这漏洞如此简单我竟然没发现，真是浅薄了，<br>在此记录以下</p>]]></content>
+    <content type="html"><![CDATA[<p>做了一个赣ctf上的题，没想到这漏洞如此简单我竟然没发现，真是浅薄了，<br>在此记录一下</p><p><code>puts()</code>函数：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">puts</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *s)</span>;<br></code></pre></td></tr></table></figure><p><code>puts()</code>函数的作用是持续输出字符指针<code>s</code>指向的字符，直到遇到空字符<code>\0</code>为止，</p><p>假设<code>char s[256]</code>中<code>s</code>指向的内容是由用户输入的</p><p>那么用户可以输入一个长度超过256的字符串<br>即使机器只读取前256个字符，那么也会导致<code>s[256]</code>中没有<code>\0</code>字符，</p><p>从而使puts输出s以及s之后的内存内容（以字符串的形式），直到遇到<code>\0</code>为止</p><p>从而造成内存泄漏</p>]]></content>
     
     
     <categories>
@@ -20,9 +20,9 @@
     
     <tags>
       
-      <tag>#glibc</tag>
-      
       <tag>泄漏信息</tag>
+      
+      <tag>glibc</tag>
       
     </tags>
     
