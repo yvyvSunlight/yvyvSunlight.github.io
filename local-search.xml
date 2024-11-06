@@ -4,6 +4,56 @@
   
   
   <entry>
+    <title>python语法之模块化编程</title>
+    <link href="/2024/11/06/python%E8%AF%AD%E6%B3%95%E4%B9%8B%E6%A8%A1%E5%9D%97%E5%8C%96%E7%BC%96%E7%A8%8B/"/>
+    <url>/2024/11/06/python%E8%AF%AD%E6%B3%95%E4%B9%8B%E6%A8%A1%E5%9D%97%E5%8C%96%E7%BC%96%E7%A8%8B/</url>
+    
+    <content type="html"><![CDATA[<p><code>import</code></p><p><code>from ... import ... </code></p><p><code>from ... import ... as ...</code></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>python</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>python</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>令我困惑的一题：返回地址应该填啥？</title>
+    <link href="/2024/11/05/%E4%BB%A4%E6%88%91%E5%9B%B0%E6%83%91%E7%9A%84%E4%B8%80%E9%A2%98%EF%BC%9A%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80%E5%BA%94%E8%AF%A5%E5%A1%AB%E5%95%A5%EF%BC%9F/"/>
+    <url>/2024/11/05/%E4%BB%A4%E6%88%91%E5%9B%B0%E6%83%91%E7%9A%84%E4%B8%80%E9%A2%98%EF%BC%9A%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80%E5%BA%94%E8%AF%A5%E5%A1%AB%E5%95%A5%EF%BC%9F/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>纸上得来终觉浅，绝知此事要躬行。</p></blockquote><p>平台：buuctf<br> 题目：jarvisoj_test_your_memory 1</p><blockquote><p>一入pwn门深似海</p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>pwn</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>stack</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>再探GOT&amp;PLT及延迟绑定</title>
     <link href="/2024/11/04/%E5%86%8D%E6%8E%A2GOT-PLT%E5%8F%8A%E5%BB%B6%E8%BF%9F%E7%BB%91%E5%AE%9A/"/>
     <url>/2024/11/04/%E5%86%8D%E6%8E%A2GOT-PLT%E5%8F%8A%E5%BB%B6%E8%BF%9F%E7%BB%91%E5%AE%9A/</url>
@@ -33,7 +83,7 @@
     <link href="/2024/11/04/ret2libc/"/>
     <url>/2024/11/04/ret2libc/</url>
     
-    <content type="html"><![CDATA[<h3 id="什么样的题是ret2libc，这类题该怎么做？"><a href="#什么样的题是ret2libc，这类题该怎么做？" class="headerlink" title="什么样的题是ret2libc，这类题该怎么做？"></a>什么样的题是ret2libc，这类题该怎么做？</h3><p>程序的特征是：<br><strong>能</strong>进行栈<strong>溢出</strong>，没有<code>system</code>函数，也没有<code>&quot;/bin/sh&quot;</code>参数<br>无法进行常规的ret2text<br>ret2libc的关键是获取libc的版本，所以需要获得<code>libc.so</code>中函数的偏移量，<br>所以<strong>需要</strong>一个<strong>输出函数</strong>，<code>.got.plt</code>中需要有<strong>libc中的函数</strong>，我们才能获取到libc中函数的<strong>真实地址</strong></p><p>从而利用<strong>LibcSearcher</strong>确定libc版本</p><hr><p>LibcSearcher原理？<br>基地址范围？</p><hr><p>前置知识：<br>libc中有<code>system</code>函数，而<code>libc.so</code>动态偏移链接库中的函数之间的相对偏移是固定的</p><p>ALSR保护不会随机内存地址的后12位（后3个字节）</p><p><code>pwntools</code>基本语法：<br><code>elf.got()</code>返回的是<code>.got</code>中函数 相对plt基地址的偏移量<br><code>elf.plt()</code>返回的是<code>.plt</code>中函数 相对got基地址的偏移量</p>]]></content>
+    <content type="html"><![CDATA[<h3 id="什么样的题是ret2libc，这类题该怎么做？"><a href="#什么样的题是ret2libc，这类题该怎么做？" class="headerlink" title="什么样的题是ret2libc，这类题该怎么做？"></a>什么样的题是ret2libc，这类题该怎么做？</h3><p>程序的特征是：<br><strong>能</strong>进行栈<strong>溢出</strong>，没有<code>system</code>函数，也没有<code>&quot;/bin/sh&quot;</code>参数<br>无法进行常规的ret2text<br>ret2libc的关键是获取libc的版本，所以需要获得<code>libc.so</code>中函数的偏移量，<br>所以<strong>需要</strong>一个<strong>输出函数</strong>，<code>.got.plt</code>中需要有<strong>libc中的函数</strong>，我们才能获取到libc中函数的<strong>真实地址</strong></p><p>从而利用<strong>LibcSearcher</strong>确定libc版本</p><hr><p>LibcSearcher原理？<br>基地址范围？</p><hr><p>前置知识：<br>libc中有<code>system</code>函数，而<code>libc.so</code>动态偏移链接库中的函数之间的相对偏移是固定的</p><p>ALSR保护不会随机内存地址的后12位（后3个字节）</p><p><code>pwntools</code>基本语法：<br><code>elf.got()</code>返回的是<code>.got</code>中函数 相对plt基地址的偏移量<br><code>elf.plt()</code>返回的是<code>.plt</code>中函数 相对got基地址的偏移量</p><hr><h1 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h1><p><code>write()</code>函数是C标准库（libc）中的一个系统调用，常用于向文件描述符写入数据：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">ssize_t</span> <span class="hljs-title function_">write</span><span class="hljs-params">(<span class="hljs-type">int</span> fd, <span class="hljs-type">const</span> <span class="hljs-type">void</span> *buf, <span class="hljs-type">size_t</span> count)</span>;<br></code></pre></td></tr></table></figure><h6 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h6><ol><li><code>fd</code> ：目标文件描述符<br>常见：</li></ol><ul><li><code>0</code>：标准输入</li><li><code>1</code>：标准输出</li><li><code>2</code>：标准错误输出</li><li><code>open</code>系统调用获取文件描述符</li></ul><ol start="2"><li><code>buf</code>：源数据缓冲区</li><li><code>count</code>：要写入的<strong>字节数</strong></li></ol><h6 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h6><ul><li>成功 返回写入的字节数</li><li>失败 返回-1</li></ul><hr><h1 id="LibcSearcher"><a href="#LibcSearcher" class="headerlink" title="LibcSearcher"></a>LibcSearcher</h1><h6 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h6><p>原版接口</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> LibcSearcher <span class="hljs-keyword">import</span> *<br>obj = LibcSearcher(<span class="hljs-string">&quot;fgets&quot;</span>,<span class="hljs-number">0x7ff39014bd90</span>)  <span class="hljs-comment"># 使用一个已知符号地址作为初始约束，初始化LibcSearcher</span><br>obj.add_condition(<span class="hljs-string">&quot;atoi&quot;</span>, <span class="hljs-number">218528</span>)  <span class="hljs-comment"># 添加一个约束条件</span><br>obj.dump(<span class="hljs-string">&quot;printf&quot;</span>)  <span class="hljs-comment"># 根据已有约束条件，查询某个符号在Libc中的地址(偏移量)</span><br></code></pre></td></tr></table></figure><p>新增接口</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">len</span>(obj)  <span class="hljs-comment"># 返回在当前约束条件下，可能的Libc数量</span><br><span class="hljs-built_in">print</span>(obj)  <span class="hljs-comment"># 若Libc已被唯一确定，打印其详细信息</span><br><br><span class="hljs-keyword">for</span> libc <span class="hljs-keyword">in</span> obj:<br><span class="hljs-built_in">print</span>(libc)  <span class="hljs-comment"># 实现了迭代器，打印（或其他操作）当前所有可能的Libc</span><br><br>obj.select_libc()  <span class="hljs-comment"># 打印可能的Libc列表，手动选择一个认为正确的Libc</span><br>obj.select_libc(<span class="hljs-number">2</span>)  <span class="hljs-comment"># 手动选择2号Libc作为正确的Libc</span><br></code></pre></td></tr></table></figure>]]></content>
     
     
     <categories>
@@ -46,6 +96,8 @@
     <tags>
       
       <tag>ret2xx</tag>
+      
+      <tag>stack</tag>
       
     </tags>
     
@@ -132,10 +184,10 @@
   
   <entry>
     <title>obsidian+hexo方案解决图片显示问题</title>
-    <link href="/2024/10/30/obsidian+hexo%E8%A7%A3%E5%86%B3%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/"/>
-    <url>/2024/10/30/obsidian+hexo%E8%A7%A3%E5%86%B3%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/</url>
+    <link href="/2024/10/30/obsidian-hexo%E8%A7%A3%E5%86%B3%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/"/>
+    <url>/2024/10/30/obsidian-hexo%E8%A7%A3%E5%86%B3%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/</url>
     
-    <content type="html"><![CDATA[<p>建立博客后遇到的第一个问题就是hexo上的图片显示问题</p><hr><p>想到一种考虑，把图片全都放在一个文件夹里试试<br>挖个坑<br>有空试试</p><p>测试图片</p><p>测试失败</p><p>测试图片2</p><p>好，试过了，确实不行<br>现有obsidian设置和hexo设置无法满足这个要求</p><hr><p>只有原先上面的方法是行的（目前最优）</p><p>成功</p><p>但可以考虑设置<code>_config.yml</code>：</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">post_asset_folder:</span> <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure><p>这样在<code>hexo new post &lt;name&gt;</code>时，就不会再多创建一个可能用不到的资源文件夹<br>在obsidian中粘贴时自动创建即可</p><p>注意：<br>obsidian插件<code>Custom Attachment Loaction</code>设置中附件的命名问题</p><hr><p>发现：<br>排在前面的url错误的图片竟然也会影响后面的所有图片，使后面的图片显示不出来</p><hr><p>md，还是得改成true</p><p>和插件设置中附件文件夹中文件的命名倒是没关系<br>和属性中的title也没关系</p><p>甚至和文件、文件夹的命名也没关系，只要合法且对应即可</p><hr><p><img src="/2024/10/29/hello-world/o%E8%A7%A3%E5%86%B3%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/file-20241105202739043.png"></p>]]></content>
+    <content type="html"><![CDATA[<p>建立博客后遇到的第一个问题就是hexo上的图片显示问题</p><hr><p>想到一种考虑，把图片全都放在一个文件夹里试试<br>挖个坑<br>有空试试</p><p>测试图片</p><p>测试失败</p><p>测试图片2</p><p>好，试过了，确实不行<br>现有obsidian设置和hexo设置无法满足这个要求</p><hr><p>只有原先上面的方法是行的（目前最优）</p><p>成功</p><p>但可以考虑设置<code>_config.yml</code>：</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">post_asset_folder:</span> <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure><p>这样在<code>hexo new post &lt;name&gt;</code>时，就不会再多创建一个可能用不到的资源文件夹<br>在obsidian中粘贴时自动创建即可</p><p>注意：<br>obsidian插件<code>Custom Attachment Loaction</code>设置中附件的命名问题</p><hr><p>发现：<br>排在前面的url错误的图片竟然也会影响后面的所有图片，使后面的图片显示不出来</p><hr><p>md，还是得改成true</p><p>和插件设置中附件文件夹中文件的命名倒是没关系<br>和属性中的title也没关系</p><p>甚至和文件、文件夹的命名也没关系，只要合法且对应即可</p><hr><p><img src="/file-20241105202739043.png"></p>]]></content>
     
     
     
