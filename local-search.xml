@@ -4,6 +4,132 @@
   
   
   <entry>
+    <title>库函数与系统调用</title>
+    <link href="/2024/12/07/libc/"/>
+    <url>/2024/12/07/libc/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>介绍pwn中常见的libc函数</p></blockquote><p>库函数与系统调用</p><h1 id="atoi"><a href="#atoi" class="headerlink" title="atoi()"></a>atoi()</h1><p><strong>标准库函数</strong></p><blockquote><p>ASCII to Integer<br>将字符串转换为对应的整数值</p></blockquote><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">atoi</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span>* str)</span>;<br></code></pre></td></tr></table></figure><h1 id="read"><a href="#read" class="headerlink" title="read()"></a>read()</h1><p><em><strong>系统调用</strong></em></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">ssize_t</span> <span class="hljs-title function_">read</span><span class="hljs-params">(<span class="hljs-type">int</span> fd, <span class="hljs-type">void</span>* buf, <span class="hljs-type">size_t</span> count)</span>;<br>  <br>这样，你可以在程序运行时动态地分析 **glibc** 中的函数调用和行为。<br><br>### <span class="hljs-number">5.</span> **查看已经安装的库路径**<br><br>如果你对已经安装的 **glibc** 二进制文件中的实现感兴趣，虽然不能直接看到源代码，但可以使用工具来反汇编并分析其二进制```<br><br>---<br><span class="hljs-meta"># mmap()</span><br>`mmap`是一个用于内存映射的系统调用函数，在Linux和Unix-like系统中非常常见。它允许将一个文件或其他对象（设备、内存等）映射到进程的虚拟内存空间<br>可以通过<br>指针直接访问文件内容，无需读取和写入文件<br>```c<br><span class="hljs-type">void</span>* <span class="hljs-title function_">mmap</span><span class="hljs-params">(<span class="hljs-type">void</span>* addr, <span class="hljs-type">size_t</span> length, <span class="hljs-type">int</span> flags, <span class="hljs-type">int</span> fd, <span class="hljs-type">off_t</span> offset)</span>;<br></code></pre></td></tr></table></figure><p>addr：建议的映射地址。如果传入NULL，操作系统会自动选择映射的地址<br>length：映射区域的长度，单位是字节<br>prot：指定映射区域的访问权限，通常是以下几个值的组合：</p><ul><li>PROT_READ：页可以被读取</li><li>PROT_WRITE：页可以被写入</li><li>PROT_EXEC：页可以被执行</li><li>PROT_NONE：页不能被访问<br>flags：映射的特性和行为，常见的值有：</li><li>MAP_SHARED：修改同步到文件或设备，适用于共享内存</li><li>MAP_PRIVATE：修改不会影响文件或设备，而是创建一个映射的副本，适用于私有内存</li><li>MAP_FIXED：如果映射地址已经有映射区域，它会被替换</li><li>MAP_ANONYMOUS：映射不与任何文件关联，通常用于申请匿名内存，<code>fd</code>必须为-1，offset也必须为0</li><li>fd：文件描述符，指向需要映射的文件。如果映射匿名内存，传入-1</li><li>offset：文件偏移量，表示映射内容在文件中的起始位置，映射必须是页大小的整数倍。</li></ul><hr><h1 id="阅读glibc源代码"><a href="#阅读glibc源代码" class="headerlink" title="阅读glibc源代码"></a>阅读glibc源代码</h1><p>通过<code>libc</code>库文件本身，无法直接查看其源代码。<br><code>libc</code>文件（<code>libc.so</code>或<code>libc.so.6</code>）是已经编译好的共享库，它们包含了库的二进制实现。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>pwn</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>glibc</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>AES</title>
+    <link href="/2024/11/26/AES/"/>
+    <url>/2024/11/26/AES/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>密码学实验</p></blockquote><h1 id="AES算法的基本结构"><a href="#AES算法的基本结构" class="headerlink" title="AES算法的基本结构"></a>AES算法的基本结构</h1><p>输入：128位明文，128&#x2F;192&#x2F;256位密钥</p><p>子过程： </p><ol><li>S盒变换</li><li>行移位</li><li>列混合</li><li>轮密钥加</li></ol><p>输出： 128位密文</p><h1 id="AES算法的基本运算"><a href="#AES算法的基本运算" class="headerlink" title="AES算法的基本运算"></a>AES算法的基本运算</h1><ol><li><p>$GF(2^8)$上的加法</p></li><li><p>$GF(2^8)上的多项式加法$</p></li><li><p>$GF(2^8)上的乘法$</p><ol><li><p>借助xtime运算快速实现</p><ul><li>倍乘函数：移位运算（定义：${02} \cdot {??}$）</li><li>加法：异或运算<br> 由于$GF(2^8)$中的所有元素都可以表示为02的不同幂次的和，因此所有的乘法运算都能够通过重复调用北城函数和加法快速实现<br> 例：({}中表示16进制)<br> $$<br> \begin{aligned}<br> y \cdot {15} &amp;&#x3D;y\cdot {01 \oplus 04 \oplus 10} &#x3D; y\cdot {01 \oplus 02^2 \oplus 02^4}<br> \<br> &amp;&#x3D; y\oplus xtime(xtime(y)) \oplus xtime(xtime(xtime(xtime(y))))<br> \<br> &amp;&#x3D; y \oplus xtime(xtime(y\oplus xtime(xtime(y))))<br> \end{aligned}<br> $$<br> 更快速的方法：<br> 造表：将128所有乘法结果取值与计算，存入表中，直接查表</li></ul></li><li><p>借助生成元快速实现<br> $GF(2^8)$的全体<strong>非零元素</strong>对于 <em>乘法</em> 构成<strong>循环群</strong>。设$a$为<strong>生成元</strong>，则循环群<br> $G &#x3D; {a^0, a^1, … a^{254}}$<br> G中的乘法运算：<br> $a^p \cdot a^q &#x3D; a^{(p+q) mod 255}$<br> 于是可以把$GF(2^8)$上的乘法运算简化为整数的加法运算。</p><p> <em>零元素</em>00与任何元素相乘都得00</p></li></ol></li></ol><h1 id="编程实现"><a href="#编程实现" class="headerlink" title="编程实现"></a>编程实现</h1><ol><li>造表</li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>密码学</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>codeQL一命速通</title>
+    <link href="/2024/11/12/codeQL/"/>
+    <url>/2024/11/12/codeQL/</url>
+    
+    <content type="html"><![CDATA[<p>CodeQL能干啥：<br>编写查询。。。</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">codeql database create ~/CodeQL/databases/codeql_demo --language=<span class="hljs-string">&quot;python&quot;</span> --source-root=<br></code></pre></td></tr></table></figure><p>CodeQL采用类似SQL的查询语言，但专为代码分析设计。</p><p>其语法主要围绕从代码中提取信息的操作，包括对象选择、路径探索和条件过滤。</p><p>CodeQL查询通常由以下几个部分组成：</p><ul><li>from：选择数据源，指定查询的对象</li><li>where：条件过滤，用于限制结果</li><li>select：返回查询的结果</li><li>order by：对结果进行排序</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ql">import javascript <br><br>//查找不安全的SQL查询<br>from DataFlow::Node source, DataFlow::Node sink<br>where <br>//选择通过用户<br><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>静态分析</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>伪随机</title>
+    <link href="/2024/11/12/%E4%BC%AA%E9%9A%8F%E6%9C%BA/"/>
+    <url>/2024/11/12/%E4%BC%AA%E9%9A%8F%E6%9C%BA/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>pwn</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>DSBCTF-做不出来的签到题</title>
+    <link href="/2024/11/12/DSBCTF-%E5%81%9A%E4%B8%8D%E5%87%BA%E6%9D%A5%E7%9A%84%E7%AD%BE%E5%88%B0%E9%A2%98/"/>
+    <url>/2024/11/12/DSBCTF-%E5%81%9A%E4%B8%8D%E5%87%BA%E6%9D%A5%E7%9A%84%E7%AD%BE%E5%88%B0%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<p>😭😭😭 做不出来签到</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>WP</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>发送字节码和字符串的区别</title>
+    <link href="/2024/11/09/%E5%8F%91%E9%80%81%E5%AD%97%E8%8A%82%E7%A0%81%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <url>/2024/11/09/%E5%8F%91%E9%80%81%E5%AD%97%E8%8A%82%E7%A0%81%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>ISCTF - girlfriend</p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>pwn</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>io</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>python语法之模块化编程</title>
     <link href="/2024/11/06/python%E8%AF%AD%E6%B3%95%E4%B9%8B%E6%A8%A1%E5%9D%97%E5%8C%96%E7%BC%96%E7%A8%8B/"/>
     <url>/2024/11/06/python%E8%AF%AD%E6%B3%95%E4%B9%8B%E6%A8%A1%E5%9D%97%E5%8C%96%E7%BC%96%E7%A8%8B/</url>
@@ -33,7 +159,7 @@
     <link href="/2024/11/05/%E4%BB%A4%E6%88%91%E5%9B%B0%E6%83%91%E7%9A%84%E4%B8%80%E9%A2%98%EF%BC%9A%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80%E5%BA%94%E8%AF%A5%E5%A1%AB%E5%95%A5%EF%BC%9F/"/>
     <url>/2024/11/05/%E4%BB%A4%E6%88%91%E5%9B%B0%E6%83%91%E7%9A%84%E4%B8%80%E9%A2%98%EF%BC%9A%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80%E5%BA%94%E8%AF%A5%E5%A1%AB%E5%95%A5%EF%BC%9F/</url>
     
-    <content type="html"><![CDATA[<blockquote><p>纸上得来终觉浅，绝知此事要躬行。</p></blockquote><p>平台：buuctf<br> 题目：jarvisoj_test_your_memory 1</p><blockquote><p>一入pwn门深似海</p></blockquote>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>总结：不囫囵吞枣，gdb调试见真知</p></blockquote><p>平台：buuctf<br> 题目：jarvisoj_test_your_memory<br>hexo</p>]]></content>
     
     
     <categories>
@@ -83,7 +209,7 @@
     <link href="/2024/11/04/ret2libc/"/>
     <url>/2024/11/04/ret2libc/</url>
     
-    <content type="html"><![CDATA[<h3 id="什么样的题是ret2libc，这类题该怎么做？"><a href="#什么样的题是ret2libc，这类题该怎么做？" class="headerlink" title="什么样的题是ret2libc，这类题该怎么做？"></a>什么样的题是ret2libc，这类题该怎么做？</h3><p>程序的特征是：<br><strong>能</strong>进行栈<strong>溢出</strong>，没有<code>system</code>函数，也没有<code>&quot;/bin/sh&quot;</code>参数<br>无法进行常规的ret2text<br>ret2libc的关键是获取libc的版本，所以需要获得<code>libc.so</code>中函数的偏移量，<br>所以<strong>需要</strong>一个<strong>输出函数</strong>，<code>.got.plt</code>中需要有<strong>libc中的函数</strong>，我们才能获取到libc中函数的<strong>真实地址</strong></p><p>从而利用<strong>LibcSearcher</strong>确定libc版本</p><hr><p>LibcSearcher原理？<br>基地址范围？</p><hr><p>前置知识：<br>libc中有<code>system</code>函数，而<code>libc.so</code>动态偏移链接库中的函数之间的相对偏移是固定的</p><p>ALSR保护不会随机内存地址的后12位（后3个字节）</p><p><code>pwntools</code>基本语法：<br><code>elf.got()</code>返回的是<code>.got</code>中函数 相对plt基地址的偏移量<br><code>elf.plt()</code>返回的是<code>.plt</code>中函数 相对got基地址的偏移量</p><hr><h1 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h1><p><code>write()</code>函数是C标准库（libc）中的一个系统调用，常用于向文件描述符写入数据：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">ssize_t</span> <span class="hljs-title function_">write</span><span class="hljs-params">(<span class="hljs-type">int</span> fd, <span class="hljs-type">const</span> <span class="hljs-type">void</span> *buf, <span class="hljs-type">size_t</span> count)</span>;<br></code></pre></td></tr></table></figure><h6 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h6><ol><li><code>fd</code> ：目标文件描述符<br>常见：</li></ol><ul><li><code>0</code>：标准输入</li><li><code>1</code>：标准输出</li><li><code>2</code>：标准错误输出</li><li><code>open</code>系统调用获取文件描述符</li></ul><ol start="2"><li><code>buf</code>：源数据缓冲区</li><li><code>count</code>：要写入的<strong>字节数</strong></li></ol><h6 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h6><ul><li>成功 返回写入的字节数</li><li>失败 返回-1</li></ul><hr><h1 id="LibcSearcher"><a href="#LibcSearcher" class="headerlink" title="LibcSearcher"></a>LibcSearcher</h1><h6 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h6><p>原版接口</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> LibcSearcher <span class="hljs-keyword">import</span> *<br>obj = LibcSearcher(<span class="hljs-string">&quot;fgets&quot;</span>,<span class="hljs-number">0x7ff39014bd90</span>)  <span class="hljs-comment"># 使用一个已知符号地址作为初始约束，初始化LibcSearcher</span><br>obj.add_condition(<span class="hljs-string">&quot;atoi&quot;</span>, <span class="hljs-number">218528</span>)  <span class="hljs-comment"># 添加一个约束条件</span><br>obj.dump(<span class="hljs-string">&quot;printf&quot;</span>)  <span class="hljs-comment"># 根据已有约束条件，查询某个符号在Libc中的地址(偏移量)</span><br></code></pre></td></tr></table></figure><p>新增接口</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">len</span>(obj)  <span class="hljs-comment"># 返回在当前约束条件下，可能的Libc数量</span><br><span class="hljs-built_in">print</span>(obj)  <span class="hljs-comment"># 若Libc已被唯一确定，打印其详细信息</span><br><br><span class="hljs-keyword">for</span> libc <span class="hljs-keyword">in</span> obj:<br><span class="hljs-built_in">print</span>(libc)  <span class="hljs-comment"># 实现了迭代器，打印（或其他操作）当前所有可能的Libc</span><br><br>obj.select_libc()  <span class="hljs-comment"># 打印可能的Libc列表，手动选择一个认为正确的Libc</span><br>obj.select_libc(<span class="hljs-number">2</span>)  <span class="hljs-comment"># 手动选择2号Libc作为正确的Libc</span><br></code></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p>hexo</p><h3 id="什么样的题是ret2libc，这类题该怎么做？"><a href="#什么样的题是ret2libc，这类题该怎么做？" class="headerlink" title="什么样的题是ret2libc，这类题该怎么做？"></a>什么样的题是ret2libc，这类题该怎么做？</h3><p>程序的特征是：<br><strong>能</strong>进行栈<strong>溢出</strong>，没有<code>system</code>函数，也没有<code>&quot;/bin/sh&quot;</code>参数<br>无法进行常规的ret2text<br>ret2libc的关键是获取libc的版本，所以需要获得<code>libc.so</code>中函数的偏移量，<br>所以<strong>需要</strong>一个<strong>输出函数</strong>，<code>.got.plt</code>中需要有<strong>libc中的函数</strong>，我们才能获取到libc中函数的<strong>真实地址</strong></p><p>从而利用<strong>LibcSearcher</strong>确定libc版本</p><hr><p>LibcSearcher原理？<br>基地址范围？</p><hr><p>前置知识：<br>libc中有<code>system</code>函数，而<code>libc.so</code>动态偏移链接库中的函数之间的相对偏移是固定的</p><p>ALSR保护不会随机内存地址的后12位（后3个字节）</p><p><code>pwntools</code>基本语法：<br><code>elf.got()</code>返回的是<code>.got</code>中函数 相对plt基地址的偏移量<br><code>elf.plt()</code>返回的是<code>.plt</code>中函数 相对got基地址的偏移量</p><hr><h1 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h1><p><code>write()</code>函数是C标准库（libc）中的一个系统调用，常用于向文件描述符写入数据：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">ssize_t</span> <span class="hljs-title function_">write</span><span class="hljs-params">(<span class="hljs-type">int</span> fd, <span class="hljs-type">const</span> <span class="hljs-type">void</span> *buf, <span class="hljs-type">size_t</span> count)</span>;<br></code></pre></td></tr></table></figure><h6 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h6><ol><li><code>fd</code> ：目标文件描述符<br>常见：</li></ol><ul><li><code>0</code>：标准输入</li><li><code>1</code>：标准输出</li><li><code>2</code>：标准错误输出</li><li><code>open</code>系统调用获取文件描述符</li></ul><ol start="2"><li><code>buf</code>：源数据缓冲区</li><li><code>count</code>：要写入的<strong>字节数</strong></li></ol><h6 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h6><ul><li>成功 返回写入的字节数</li><li>失败 返回-1</li></ul><hr><h1 id="LibcSearcher"><a href="#LibcSearcher" class="headerlink" title="LibcSearcher"></a>LibcSearcher</h1><h6 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h6><p>原版接口</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> LibcSearcher <span class="hljs-keyword">import</span> *<br>obj = LibcSearcher(<span class="hljs-string">&quot;fgets&quot;</span>,<span class="hljs-number">0x7ff39014bd90</span>)  <span class="hljs-comment"># 使用一个已知符号地址作为初始约束，初始化LibcSearcher</span><br>obj.add_condition(<span class="hljs-string">&quot;atoi&quot;</span>, <span class="hljs-number">218528</span>)  <span class="hljs-comment"># 添加一个约束条件</span><br>obj.dump(<span class="hljs-string">&quot;printf&quot;</span>)  <span class="hljs-comment"># 根据已有约束条件，查询某个符号在Libc中的地址(偏移量)</span><br></code></pre></td></tr></table></figure><p>新增接口</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">len</span>(obj)  <span class="hljs-comment"># 返回在当前约束条件下，可能的Libc数量</span><br><span class="hljs-built_in">print</span>(obj)  <span class="hljs-comment"># 若Libc已被唯一确定，打印其详细信息</span><br><br><span class="hljs-keyword">for</span> libc <span class="hljs-keyword">in</span> obj:<br><span class="hljs-built_in">print</span>(libc)  <span class="hljs-comment"># 实现了迭代器，打印（或其他操作）当前所有可能的Libc</span><br><br>obj.select_libc()  <span class="hljs-comment"># 打印可能的Libc列表，手动选择一个认为正确的Libc</span><br>obj.select_libc(<span class="hljs-number">2</span>)  <span class="hljs-comment"># 手动选择2号Libc作为正确的Libc</span><br></code></pre></td></tr></table></figure>]]></content>
     
     
     <categories>

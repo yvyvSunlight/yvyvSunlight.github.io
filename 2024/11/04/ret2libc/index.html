@@ -19,15 +19,15 @@
   <meta name="author" content="Skylight">
   <meta name="keywords" content="">
   
-    <meta name="description" content="什么样的题是ret2libc，这类题该怎么做？程序的特征是：能进行栈溢出，没有system函数，也没有&quot;&#x2F;bin&#x2F;sh&quot;参数无法进行常规的ret2textret2libc的关键是获取libc的版本，所以需要获得libc.so中函数的偏移量，所以需要一个输出函数，.got.plt中需要有libc中的函数，我们才能获取到libc中函数的真实地址 从而利用LibcSearcher确定">
+    <meta name="description" content="hexo 什么样的题是ret2libc，这类题该怎么做？程序的特征是：能进行栈溢出，没有system函数，也没有&quot;&#x2F;bin&#x2F;sh&quot;参数无法进行常规的ret2textret2libc的关键是获取libc的版本，所以需要获得libc.so中函数的偏移量，所以需要一个输出函数，.got.plt中需要有libc中的函数，我们才能获取到libc中函数的真实地址 从而利用LibcSearc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ret2libc">
 <meta property="og:url" content="http://example.com/2024/11/04/ret2libc/index.html">
 <meta property="og:site_name" content="Skylight">
-<meta property="og:description" content="什么样的题是ret2libc，这类题该怎么做？程序的特征是：能进行栈溢出，没有system函数，也没有&quot;&#x2F;bin&#x2F;sh&quot;参数无法进行常规的ret2textret2libc的关键是获取libc的版本，所以需要获得libc.so中函数的偏移量，所以需要一个输出函数，.got.plt中需要有libc中的函数，我们才能获取到libc中函数的真实地址 从而利用LibcSearcher确定">
+<meta property="og:description" content="hexo 什么样的题是ret2libc，这类题该怎么做？程序的特征是：能进行栈溢出，没有system函数，也没有&quot;&#x2F;bin&#x2F;sh&quot;参数无法进行常规的ret2textret2libc的关键是获取libc的版本，所以需要获得libc.so中函数的偏移量，所以需要一个输出函数，.got.plt中需要有libc中的函数，我们才能获取到libc中函数的真实地址 从而利用LibcSearc">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-11-03T16:17:30.000Z">
-<meta property="article:modified_time" content="2024-11-05T14:09:03.278Z">
+<meta property="article:modified_time" content="2024-11-25T16:24:22.571Z">
 <meta property="article:author" content="Skylight">
 <meta property="article:tag" content="ret2xx">
 <meta property="article:tag" content="stack">
@@ -277,7 +277,8 @@
             
               <div class="markdown-body">
                 
-                <h3 id="什么样的题是ret2libc，这类题该怎么做？"><a href="#什么样的题是ret2libc，这类题该怎么做？" class="headerlink" title="什么样的题是ret2libc，这类题该怎么做？"></a>什么样的题是ret2libc，这类题该怎么做？</h3><p>程序的特征是：<br><strong>能</strong>进行栈<strong>溢出</strong>，没有<code>system</code>函数，也没有<code>&quot;/bin/sh&quot;</code>参数<br>无法进行常规的ret2text<br>ret2libc的关键是获取libc的版本，所以需要获得<code>libc.so</code>中函数的偏移量，<br>所以<strong>需要</strong>一个<strong>输出函数</strong>，<code>.got.plt</code>中需要有<strong>libc中的函数</strong>，我们才能获取到libc中函数的<strong>真实地址</strong></p>
+                <p>hexo</p>
+<h3 id="什么样的题是ret2libc，这类题该怎么做？"><a href="#什么样的题是ret2libc，这类题该怎么做？" class="headerlink" title="什么样的题是ret2libc，这类题该怎么做？"></a>什么样的题是ret2libc，这类题该怎么做？</h3><p>程序的特征是：<br><strong>能</strong>进行栈<strong>溢出</strong>，没有<code>system</code>函数，也没有<code>&quot;/bin/sh&quot;</code>参数<br>无法进行常规的ret2text<br>ret2libc的关键是获取libc的版本，所以需要获得<code>libc.so</code>中函数的偏移量，<br>所以<strong>需要</strong>一个<strong>输出函数</strong>，<code>.got.plt</code>中需要有<strong>libc中的函数</strong>，我们才能获取到libc中函数的<strong>真实地址</strong></p>
 <p>从而利用<strong>LibcSearcher</strong>确定libc版本</p>
 <hr>
 <p>LibcSearcher原理？<br>基地址范围？</p>
