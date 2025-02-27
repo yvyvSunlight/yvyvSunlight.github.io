@@ -4,6 +4,38 @@
   
   
   <entry>
+    <title>gcc编译链接操作</title>
+    <link href="/2025/02/27/gcc%E7%BC%96%E8%AF%91%E9%93%BE%E6%8E%A5%E6%93%8D%E4%BD%9C/"/>
+    <url>/2025/02/27/gcc%E7%BC%96%E8%AF%91%E9%93%BE%E6%8E%A5%E6%93%8D%E4%BD%9C/</url>
+    
+    <content type="html"><![CDATA[<p>编译成汇编文件(intel风格)</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">gcc -S -masm=intel sample.c -o sample.s<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>格式化字符串漏洞</title>
+    <link href="/2025/02/26/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%BC%8F%E6%B4%9E/"/>
+    <url>/2025/02/26/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%BC%8F%E6%B4%9E/</url>
+    
+    <content type="html"><![CDATA[<h1 id="原理he"><a href="#原理he" class="headerlink" title="原理he"></a>原理he</h1><p><em>格式化字符串函数</em></p><blockquote><p>可以接受可变数量的参数，</p></blockquote><p>将第一个参数作为格式化字符串，根据其来解析之后的参数。<br>通俗来讲，格式化字符串函数就是将计算机内存中表示的数据转化为我们人类可读的字符串。</p><p>几乎所有的C&#x2F;C++程序都会利用格式化字符串函数来<strong>输出信息、调试程序、处理字符串</strong>。<br>一般来说，格式化字符串在利用的时候主要分为三个部分：</p><ul><li>格式化字符串函数</li><li>格式化字符串</li><li>后续参数，可选</li></ul><p>example:</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Color %s, Number %d, Float %4.2f&quot;</span>, <span class="hljs-string">&quot;red&quot;</span>, <span class="hljs-number">123456</span>, <span class="hljs-number">3.14</span>)<br></code></pre></td></tr></table></figure><p>在进入printf函数之前的栈布局：</p><figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs prolog">[stack bottom / high address]<br>...<br><span class="hljs-number">3.14</span><br><span class="hljs-number">123456</span><br>addr of <span class="hljs-string">&quot;red&quot;</span><br>addr of format string: <span class="hljs-symbol">Color</span> <span class="hljs-comment">%s...</span><br>[stack top / low address]<br></code></pre></td></tr></table></figure><p>在进入printf之后，函数首先获取第一个参数，一个一个读取其字符会遇到两种情况</p><ul><li>当前字符不是%，直接输出到响应标准输出</li><li>当前字符是%，继续读取下一个字符<ul><li>如果下一个字符是%，输出%</li><li>如果没字符，报错，也可能仍运行输出%【gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04)】</li><li>如果有其它字符则根据字符，获取相应的参数，对其进行解析并输出</li></ul></li></ul><p>但是如果我们写成了这个样子:</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Color %s, Number %d, Float $4.2f&quot;</span>);<br></code></pre></td></tr></table></figure><p>此时我们可以发现我们并没有提供参数，那么程序会如何运行呢？<br>程序仍然会运行，而且会将栈上存储格式化字符串地址的高地址方向的三块相应大小的内存区域分别解析为</p><ol><li>解析其地址(内存中的值)对应的字符串</li><li>解析其内容(内存中的值)对应的整型值</li><li>解析其内容(内存中的值)对应的浮点值</li></ol><p>对于2，3来说倒也无妨，<br>但是对于1来说，若内存块中的值是一个不可访问的地址，比如0，那么程序就会因此而崩溃。</p><h1 id="如何利用"><a href="#如何利用" class="headerlink" title="如何利用"></a>如何利用</h1><p>在上一部分，我们已经看到了格式化字符串漏洞的两个利用手段</p><ul><li>使程序崩溃，因为栈上方（高地址&#x2F;栈底）的内存处存到的地址大概率不可访问，利用<code>%s</code></li><li>查看进程内容，利用<code>%d</code>，<code>%f</code>输出栈上的内容</li></ul><h2 id="利用手段之泄漏内存"><a href="#利用手段之泄漏内存" class="headerlink" title="利用手段之泄漏内存"></a>利用手段之<em>泄漏内存</em></h2><p>获取我们所想要的内容</p><ul><li>泄漏栈内存<ul><li>获取某个变量的值   <code>%d</code></li><li>获取某个变量对应地址的内存 <code>%s</code></li></ul></li><li>泄漏任意地址内存<ul><li>利用GOT表得到libc函数地址，进而获取libc，进而获取其它libc函数地址</li><li>盲打，dump整个程序，获取有用的信息。</li></ul></li></ul><p>hex<br>。。。he</p><hr><p><img src="/2024/10/29/hello-world/e-20250226224707861.png"></p><blockquote><p>本文在一定程度上参考了各种推文、wiki</p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>pwn</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>库函数与系统调用</title>
     <link href="/2024/12/07/libc/"/>
     <url>/2024/12/07/libc/</url>
@@ -332,7 +364,7 @@
     <link href="/2024/10/29/new-article/"/>
     <url>/2024/10/29/new-article/</url>
     
-    <content type="html"><![CDATA[<h1 id="这是一篇测试文章"><a href="#这是一篇测试文章" class="headerlink" title="这是一篇测试文章"></a>这是一篇测试文章</h1><p>使用hexo的步骤</p><p>新建about页：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">hexo new page about<br></code></pre></td></tr></table></figure><p>添加layout</p><p>新建文章</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">hexo new post new_article<br></code></pre></td></tr></table></figure><h1 id="test"><a href="#test" class="headerlink" title="test"></a>test</h1><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">marked:</span><br>  <span class="hljs-attr">prependRoot:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">postAsset:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure><p>再试？</p><p><img src="/2024/10/29/hello-world/file-20241105202749069.png"></p><p>将文章发布到github：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">hexo g -d<br></code></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h1 id="这是一篇测试文h"><a href="#这是一篇测试文h" class="headerlink" title="这是一篇测试文h"></a>这是一篇测试文h</h1><p>使用hexo的步骤</p><p>新建about页：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">hexo new page about<br></code></pre></td></tr></table></figure><p>添加layout</p><p>新建文章</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">hexo new post new_article<br></code></pre></td></tr></table></figure><h1 id="test"><a href="#test" class="headerlink" title="test"></a>test</h1><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">marked:</span><br>  <span class="hljs-attr">prependRoot:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">postAsset:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure><p>再试？</p><p><img src="/2024/10/29/hello-world/file-20241105202749069.png"></p><p>将文章发布到github：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">hexo g -d<br></code></pre></td></tr></table></figure>]]></content>
     
     
     
