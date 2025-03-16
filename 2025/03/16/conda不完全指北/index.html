@@ -19,21 +19,27 @@
   <meta name="author" content="yvyvSunlight">
   <meta name="keywords" content="">
   
-    <meta name="description" content="技术栈：python+django+MySQL  先激活虚拟环境  清空数据库 但保留数据库结构： 1python manage.py flush --no-input  安装相关依赖 1pip install -r requirement.txt   重新运行迁移 12python manage.py makemigrationspython manage.py migrate  重新加载初始数">
+    <meta name="description" content="安装anaconda后，将anaconda适配到powershell 每次启动powershell都会默认激活虚拟环境base查看pip版本发现是anaconda中的pip查看python版本和安装位置发现也是anaconda中的 如何取消默认激活？  查看本机conda默认配置 1conda config --show  我们可以看到auto_activate_base属性默认设置为 True将">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前后端联调之后端">
-<meta property="og:url" content="http://example.com/2025/03/09/%E5%89%8D%E5%90%8E%E7%AB%AF%E8%81%94%E8%B0%83%E4%B9%8B%E5%90%8E%E7%AB%AF/index.html">
+<meta property="og:title" content="conda不完全指北">
+<meta property="og:url" content="http://example.com/2025/03/16/conda%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8C%97/index.html">
 <meta property="og:site_name" content="yvyvSunlight">
-<meta property="og:description" content="技术栈：python+django+MySQL  先激活虚拟环境  清空数据库 但保留数据库结构： 1python manage.py flush --no-input  安装相关依赖 1pip install -r requirement.txt   重新运行迁移 12python manage.py makemigrationspython manage.py migrate  重新加载初始数">
+<meta property="og:description" content="安装anaconda后，将anaconda适配到powershell 每次启动powershell都会默认激活虚拟环境base查看pip版本发现是anaconda中的pip查看python版本和安装位置发现也是anaconda中的 如何取消默认激活？  查看本机conda默认配置 1conda config --show  我们可以看到auto_activate_base属性默认设置为 True将">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-03-09T07:51:50.000Z">
-<meta property="article:modified_time" content="2025-03-16T15:02:12.968Z">
+<meta property="og:image" content="http://example.com/2024/10/29/hello-world/ile-20250316220129252.png">
+<meta property="og:image" content="http://example.com/2024/10/29/hello-world/ile-20250316220433217.png">
+<meta property="og:image" content="http://example.com/2024/10/29/hello-world/ile-20250316215812261.png">
+<meta property="og:image" content="http://example.com/2024/10/29/hello-world/ile-20250316220749782.png">
+<meta property="og:image" content="http://example.com/2024/10/29/hello-world/ile-20250316221052211.png">
+<meta property="article:published_time" content="2025-03-16T13:54:34.000Z">
+<meta property="article:modified_time" content="2025-03-16T14:50:31.882Z">
 <meta property="article:author" content="yvyvSunlight">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2024/10/29/hello-world/ile-20250316220129252.png">
   
   
   
-  <title>前后端联调之后端 - yvyvSunlight</title>
+  <title>conda不完全指北 - yvyvSunlight</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +205,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="前后端联调之后端"></span>
+            <span id="subtitle" data-typed-text="conda不完全指北"></span>
           
         </div>
 
@@ -210,8 +216,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-03-09 15:51" pubdate>
-          2025年3月9日 下午
+        <time datetime="2025-03-16 21:54" pubdate>
+          2025年3月16日 晚上
         </time>
       </span>
     
@@ -222,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          72 字
+          131 字
         
       </span>
     
@@ -233,7 +239,7 @@
         
         
         
-          1 分钟
+          2 分钟
         
       </span>
     
@@ -270,31 +276,24 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">前后端联调之后端</h1>
+            <h1 id="seo-header">conda不完全指北</h1>
             
             
               <div class="markdown-body">
                 
-                <p>技术栈：<br>python+django+MySQL</p>
-<ol>
-<li><p>先激活虚拟环境</p>
-</li>
-<li><p>清空数据库 但保留数据库结构：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">python manage.py flush --no-input<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>安装相关依赖</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">pip install -r requirement.txt<br></code></pre></td></tr></table></figure>
+                <p>安装anaconda后，<br>将anaconda适配到powershell</p>
+<p>每次启动powershell都会默认激活虚拟环境base<br>查看pip版本<br><img src="/2024/10/29/hello-world/ile-20250316220129252.png" srcset="/img/loading.gif" lazyload><br>发现是anaconda中的pip<br>查看python版本和安装位置<br><img src="/2024/10/29/hello-world/ile-20250316220433217.png" srcset="/img/loading.gif" lazyload><br>发现也是anaconda中的</p>
+<p>如何取消默认激活？</p>
+<hr>
+<p>查看本机conda默认配置</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">conda config --show<br></code></pre></td></tr></table></figure>
 
-</li>
-<li><p>重新运行迁移</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">python manage.py makemigrations<br>python manage.py migrate<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>重新加载初始数据：(如果有)<br>有一个<code>initial_data.json</code>文件</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">python manage.py loaddata initial_data.json<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>启动服务器</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">python manage.py runserver<br></code></pre></td></tr></table></figure></li>
-</ol>
+<p><img src="/2024/10/29/hello-world/ile-20250316215812261.png" srcset="/img/loading.gif" lazyload><br>我们可以看到<br><code>auto_activate_base</code>属性默认设置为 <code>True</code><br>将其设置为<code>False</code>即可</p>
+<p>使用命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">conda config --<span class="hljs-built_in">set</span> auto_activate_base False<br></code></pre></td></tr></table></figure>
+<p><img src="/2024/10/29/hello-world/ile-20250316220749782.png" srcset="/img/loading.gif" lazyload><br>执行后查看<br><code>auto_activate_base</code>已经变成了<code>False</code></p>
+<hr>
+<p>关闭终端后再启动<br><img src="/2024/10/29/hello-world/ile-20250316221052211.png" srcset="/img/loading.gif" lazyload><br>发现路径前已经没有了base前缀，<br>pip 和 python 切换成系统的pip和python了</p>
 
                 
               </div>
@@ -313,7 +312,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%89%8D%E5%90%8E%E7%AB%AF/" class="category-chain-item">前后端</a>
+  <a href="/categories/Environment/" class="category-chain-item">Environment</a>
   
   
 
@@ -333,8 +332,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>前后端联调之后端</div>
-      <div>http://example.com/2025/03/09/前后端联调之后端/</div>
+      <div>conda不完全指北</div>
+      <div>http://example.com/2025/03/16/conda不完全指北/</div>
     </div>
     <div class="license-meta">
       
@@ -346,7 +345,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年3月9日</div>
+          <div>2025年3月16日</div>
         </div>
       
       
@@ -378,18 +377,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/03/10/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%AE%9E%E6%97%B6%E5%8F%8C%E5%90%91%E9%80%9A%E4%BF%A1/" title="前后端实时双向通信">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">前后端实时双向通信</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/03/09/%E5%89%8D%E7%AB%AF%E5%A6%82%E4%BD%95mock%E6%95%B0%E6%8D%AE/" title="前端如何mock数据">
-                        <span class="hidden-mobile">前端如何mock数据</span>
+                      <a href="/2025/03/16/docker%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8C%97/" title="docker不完全指北">
+                        <span class="hidden-mobile">docker不完全指北</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

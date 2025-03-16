@@ -19,21 +19,21 @@
   <meta name="author" content="yvyvSunlight">
   <meta name="keywords" content="">
   
-    <meta name="description" content="技术栈：python+django+MySQL  先激活虚拟环境  清空数据库 但保留数据库结构： 1python manage.py flush --no-input  安装相关依赖 1pip install -r requirement.txt   重新运行迁移 12python manage.py makemigrationspython manage.py migrate  重新加载初始数">
+    <meta name="description" content="使用Docker搭建CTF Pwn做题环境 为了保证利用脚本能够正常打通， 我们通常需要在本地准备相同的运行环境， 并且在远程利用之前先在本地进行测试  如果为每个不同的运行环境都单独准备一个Ubuntu虚拟机，则太不优雅了  Docker 操作系统层面上的虚拟化方案能够非常便捷地搭建不同pwn题所对应的原始环境   [!note] 对比虚拟机硬件层面的虚拟化方案  Docker使用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前后端联调之后端">
-<meta property="og:url" content="http://example.com/2025/03/09/%E5%89%8D%E5%90%8E%E7%AB%AF%E8%81%94%E8%B0%83%E4%B9%8B%E5%90%8E%E7%AB%AF/index.html">
+<meta property="og:title" content="docker不完全指北">
+<meta property="og:url" content="http://example.com/2025/03/16/docker%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8C%97/index.html">
 <meta property="og:site_name" content="yvyvSunlight">
-<meta property="og:description" content="技术栈：python+django+MySQL  先激活虚拟环境  清空数据库 但保留数据库结构： 1python manage.py flush --no-input  安装相关依赖 1pip install -r requirement.txt   重新运行迁移 12python manage.py makemigrationspython manage.py migrate  重新加载初始数">
+<meta property="og:description" content="使用Docker搭建CTF Pwn做题环境 为了保证利用脚本能够正常打通， 我们通常需要在本地准备相同的运行环境， 并且在远程利用之前先在本地进行测试  如果为每个不同的运行环境都单独准备一个Ubuntu虚拟机，则太不优雅了  Docker 操作系统层面上的虚拟化方案能够非常便捷地搭建不同pwn题所对应的原始环境   [!note] 对比虚拟机硬件层面的虚拟化方案  Docker使用">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-03-09T07:51:50.000Z">
-<meta property="article:modified_time" content="2025-03-16T15:02:12.968Z">
+<meta property="article:published_time" content="2025-03-16T13:51:54.000Z">
+<meta property="article:modified_time" content="2025-03-16T15:05:11.361Z">
 <meta property="article:author" content="yvyvSunlight">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>前后端联调之后端 - yvyvSunlight</title>
+  <title>docker不完全指北 - yvyvSunlight</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="前后端联调之后端"></span>
+            <span id="subtitle" data-typed-text="docker不完全指北"></span>
           
         </div>
 
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-03-09 15:51" pubdate>
-          2025年3月9日 下午
+        <time datetime="2025-03-16 21:51" pubdate>
+          2025年3月16日 晚上
         </time>
       </span>
     
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          72 字
+          140 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          1 分钟
+          2 分钟
         
       </span>
     
@@ -270,32 +270,23 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">前后端联调之后端</h1>
+            <h1 id="seo-header">docker不完全指北</h1>
             
             
               <div class="markdown-body">
                 
-                <p>技术栈：<br>python+django+MySQL</p>
-<ol>
-<li><p>先激活虚拟环境</p>
-</li>
-<li><p>清空数据库 但保留数据库结构：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">python manage.py flush --no-input<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>安装相关依赖</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">pip install -r requirement.txt<br></code></pre></td></tr></table></figure>
-
-</li>
-<li><p>重新运行迁移</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">python manage.py makemigrations<br>python manage.py migrate<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>重新加载初始数据：(如果有)<br>有一个<code>initial_data.json</code>文件</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">python manage.py loaddata initial_data.json<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>启动服务器</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">python manage.py runserver<br></code></pre></td></tr></table></figure></li>
-</ol>
-
+                <h1 id="使用Docker搭建CTF-Pwn做题环境"><a href="#使用Docker搭建CTF-Pwn做题环境" class="headerlink" title="使用Docker搭建CTF Pwn做题环境"></a>使用Docker搭建CTF Pwn做题环境</h1><blockquote>
+<p>为了保证利用脚本能够正常打通，<br> 我们通常需要在<strong>本地准备相同的运行环境</strong>，<br> 并且在远程利用之前先在本地进行测试</p>
+</blockquote>
+<p>如果为每个不同的运行环境都单独准备一个Ubuntu虚拟机，<br>则太<strong>不优雅</strong>了</p>
+<hr>
+<h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><blockquote>
+<p>操作系统层面上的虚拟化方案<br>能够非常便捷地搭建不同pwn题所对应的原始环境</p>
+</blockquote>
+<blockquote>
+<p>[!note] 对比虚拟机<br>硬件层面的虚拟化方案</p>
+</blockquote>
+<h2 id="Docker使用"><a href="#Docker使用" class="headerlink" title="Docker使用"></a>Docker使用</h2>
                 
               </div>
             
@@ -313,7 +304,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%89%8D%E5%90%8E%E7%AB%AF/" class="category-chain-item">前后端</a>
+  <a href="/categories/Environment/" class="category-chain-item">Environment</a>
   
   
 
@@ -333,8 +324,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>前后端联调之后端</div>
-      <div>http://example.com/2025/03/09/前后端联调之后端/</div>
+      <div>docker不完全指北</div>
+      <div>http://example.com/2025/03/16/docker不完全指北/</div>
     </div>
     <div class="license-meta">
       
@@ -346,7 +337,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年3月9日</div>
+          <div>2025年3月16日</div>
         </div>
       
       
@@ -378,9 +369,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/03/10/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%AE%9E%E6%97%B6%E5%8F%8C%E5%90%91%E9%80%9A%E4%BF%A1/" title="前后端实时双向通信">
+                      <a href="/2025/03/16/conda%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8C%97/" title="conda不完全指北">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">前后端实时双向通信</span>
+                        <span class="hidden-mobile">conda不完全指北</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -388,8 +379,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/03/09/%E5%89%8D%E7%AB%AF%E5%A6%82%E4%BD%95mock%E6%95%B0%E6%8D%AE/" title="前端如何mock数据">
-                        <span class="hidden-mobile">前端如何mock数据</span>
+                      <a href="/2025/03/15/Nginx/" title="Nginx">
+                        <span class="hidden-mobile">Nginx</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

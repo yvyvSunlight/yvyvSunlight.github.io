@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>conda不完全指北</title>
+    <link href="/2025/03/16/conda%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8C%97/"/>
+    <url>/2025/03/16/conda%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8C%97/</url>
+    
+    <content type="html"><![CDATA[<p>安装anaconda后，<br>将anaconda适配到powershell</p><p>每次启动powershell都会默认激活虚拟环境base<br>查看pip版本<br><img src="/2024/10/29/hello-world/ile-20250316220129252.png"><br>发现是anaconda中的pip<br>查看python版本和安装位置<br><img src="/2024/10/29/hello-world/ile-20250316220433217.png"><br>发现也是anaconda中的</p><p>如何取消默认激活？</p><hr><p>查看本机conda默认配置</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">conda config --show<br></code></pre></td></tr></table></figure><p><img src="/2024/10/29/hello-world/ile-20250316215812261.png"><br>我们可以看到<br><code>auto_activate_base</code>属性默认设置为 <code>True</code><br>将其设置为<code>False</code>即可</p><p>使用命令：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">conda config --<span class="hljs-built_in">set</span> auto_activate_base False<br></code></pre></td></tr></table></figure><p><img src="/2024/10/29/hello-world/ile-20250316220749782.png"><br>执行后查看<br><code>auto_activate_base</code>已经变成了<code>False</code></p><hr><p>关闭终端后再启动<br><img src="/2024/10/29/hello-world/ile-20250316221052211.png"><br>发现路径前已经没有了base前缀，<br>pip 和 python 切换成系统的pip和python了</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Environment</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>docker不完全指北</title>
+    <link href="/2025/03/16/docker%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8C%97/"/>
+    <url>/2025/03/16/docker%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8C%97/</url>
+    
+    <content type="html"><![CDATA[<h1 id="使用Docker搭建CTF-Pwn做题环境"><a href="#使用Docker搭建CTF-Pwn做题环境" class="headerlink" title="使用Docker搭建CTF Pwn做题环境"></a>使用Docker搭建CTF Pwn做题环境</h1><blockquote><p>为了保证利用脚本能够正常打通，<br> 我们通常需要在<strong>本地准备相同的运行环境</strong>，<br> 并且在远程利用之前先在本地进行测试</p></blockquote><p>如果为每个不同的运行环境都单独准备一个Ubuntu虚拟机，<br>则太<strong>不优雅</strong>了</p><hr><h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><blockquote><p>操作系统层面上的虚拟化方案<br>能够非常便捷地搭建不同pwn题所对应的原始环境</p></blockquote><blockquote><p>[!note] 对比虚拟机<br>硬件层面的虚拟化方案</p></blockquote><h2 id="Docker使用"><a href="#Docker使用" class="headerlink" title="Docker使用"></a>Docker使用</h2>]]></content>
+    
+    
+    <categories>
+      
+      <category>Environment</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Nginx</title>
     <link href="/2025/03/15/Nginx/"/>
     <url>/2025/03/15/Nginx/</url>
@@ -32,7 +70,7 @@
     
     <categories>
       
-      <category>前端</category>
+      <category>前后端</category>
       
     </categories>
     
@@ -49,6 +87,12 @@
     <content type="html"><![CDATA[<p>本来想在 <em>珞珈攻略6.0</em> 这个项目中实现一下子，<br>但想到可以用计算来代替，就算了（时间有限</p><p><a href="https://zhuanlan.zhihu.com/p/3428014292">使用vue3实现计时器和倒计时效果 - 知乎</a></p>]]></content>
     
     
+    <categories>
+      
+      <category>前后端</category>
+      
+    </categories>
+    
     
   </entry>
   
@@ -61,6 +105,12 @@
     
     <content type="html"><![CDATA[<p>技术栈：<br>python+django+MySQL</p><ol><li><p>先激活虚拟环境</p></li><li><p>清空数据库 但保留数据库结构：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">python manage.py flush --no-input<br></code></pre></td></tr></table></figure></li><li><p>安装相关依赖</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">pip install -r requirement.txt<br></code></pre></td></tr></table></figure></li><li><p>重新运行迁移</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">python manage.py makemigrations<br>python manage.py migrate<br></code></pre></td></tr></table></figure></li><li><p>重新加载初始数据：(如果有)<br>有一个<code>initial_data.json</code>文件</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">python manage.py loaddata initial_data.json<br></code></pre></td></tr></table></figure></li><li><p>启动服务器</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">python manage.py runserver<br></code></pre></td></tr></table></figure></li></ol>]]></content>
     
+    
+    <categories>
+      
+      <category>前后端</category>
+      
+    </categories>
     
     
   </entry>
@@ -77,7 +127,7 @@
     
     <categories>
       
-      <category>前端</category>
+      <category>前后端</category>
       
     </categories>
     
@@ -96,7 +146,7 @@
     
     <categories>
       
-      <category>前端</category>
+      <category>前后端</category>
       
     </categories>
     
