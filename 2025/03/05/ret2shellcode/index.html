@@ -19,15 +19,15 @@
   <meta name="author" content="yvyvSunlight">
   <meta name="keywords" content="">
   
-    <meta name="description" content="yvyvSunlight的个人博客">
+    <meta name="description" content="call指令无论是x86还是x86_64call指令的基本功能都是一致的  保存返回地址将下一条指令的地址（返回地址）压入栈中。 跳转到子程序call指令将程序的控制权转移到指定的目标地址   编写shellcodepwntools生成1shellcode &#x3D; asm(shellcraft.sh()) 1shellcode &#x3D; asm(shellcraft.cat(&#x27;flag&#x27;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ret2shellcode">
 <meta property="og:url" content="http://example.com/2025/03/05/ret2shellcode/index.html">
 <meta property="og:site_name" content="yvyvSunlight">
-<meta property="og:description" content="yvyvSunlight的个人博客">
+<meta property="og:description" content="call指令无论是x86还是x86_64call指令的基本功能都是一致的  保存返回地址将下一条指令的地址（返回地址）压入栈中。 跳转到子程序call指令将程序的控制权转移到指定的目标地址   编写shellcodepwntools生成1shellcode &#x3D; asm(shellcraft.sh()) 1shellcode &#x3D; asm(shellcraft.cat(&#x27;flag&#x27;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-03-05T12:59:12.000Z">
-<meta property="article:modified_time" content="2025-03-05T12:59:12.479Z">
+<meta property="article:modified_time" content="2025-03-18T12:01:38.001Z">
 <meta property="article:author" content="yvyvSunlight">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          193 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          1 分钟
+          2 分钟
         
       </span>
     
@@ -275,13 +275,54 @@
             
               <div class="markdown-body">
                 
-                
+                <h1 id="call指令"><a href="#call指令" class="headerlink" title="call指令"></a>call指令</h1><p>无论是x86还是x86_64<br><code>call</code>指令的基本功能都是一致的</p>
+<ol>
+<li>保存返回地址<br>将下一条指令的地址（返回地址）压入栈中。</li>
+<li>跳转到子程序<br><code>call</code>指令将程序的控制权转移到指定的目标地址</li>
+</ol>
+<hr>
+<h1 id="编写shellcode"><a href="#编写shellcode" class="headerlink" title="编写shellcode"></a>编写shellcode</h1><h2 id="pwntools生成"><a href="#pwntools生成" class="headerlink" title="pwntools生成"></a>pwntools生成</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">shellcode = asm(shellcraft.sh())<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">shellcode = asm(shellcraft.cat(<span class="hljs-string">&#x27;flag&#x27;</span>))<br></code></pre></td></tr></table></figure>
+
+
+<p>shellcraft.sh():<br>生成获取<code>/bin/sh</code>的汇编指令<br>asm()：<br>将汇编指令汇编成字节码</p>
+<hr>
+<h2 id="手写"><a href="#手写" class="headerlink" title="手写"></a>手写</h2><p>ascii码转16进制在线工具：<br><a target="_blank" rel="noopener" href="https://www.bchrt.com/tools/ascii-converter/">ASCII、十六进制、二进制、十进制、Base64转换器</a><br><a target="_blank" rel="noopener" href="https://shell-storm.org/online/Online-Assembler-and-Disassembler/">Online Assembler and Disassembler</a></p>
+<blockquote>
+<p>to learn:<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/j284886202/article/details/133924239">★pwn 手写Shellcode保姆级教程★_shellcode编写教程-CSDN博客</a></p>
+</blockquote>
+<hr>
+<p>栈地址是每时每刻都在变的<br>且栈地址是不可事先知道的</p>
+<hr>
+<p>在做ctfshow的pwn60的时候<br>遇到了ida测量栈底距离出错的情况</p>
+
                 
               </div>
             
             <hr/>
             <div>
               <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/pwn/" class="category-chain-item">pwn</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
   
   
 </div>

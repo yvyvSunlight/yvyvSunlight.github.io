@@ -229,6 +229,193 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/11/04/ret2libc/" target="_self">
+          ret2libc
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/11/04/ret2libc/" target="_self">
+        <div>
+          hexo 什么样的题是ret2libc，这类题该怎么做？程序的特征是：能进行栈溢出，没有system函数，也没有&quot;/bin/sh&quot;参数无法进行常规的ret2textret2libc的关键是获取libc的版本，所以需要获得libc.so中函数的偏移量，所以需要一个输出函数，.got.plt中需要有libc中的函数，我们才能获取到libc中函数的真实地址 从而利用LibcSearc
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-11-04 00:17" pubdate>
+              2024-11-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/pwn/" class="category-chain-item">pwn</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/ret2xx/">#ret2xx</a>
+            
+              <a href="/tags/stack/">#stack</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/11/04/python%E8%AF%AD%E6%B3%95%E4%B9%8B%E5%AD%97%E5%85%B8/" target="_self">
+          python语法之字典
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/11/04/python%E8%AF%AD%E6%B3%95%E4%B9%8B%E5%AD%97%E5%85%B8/" target="_self">
+        <div>
+          
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-11-04 00:13" pubdate>
+              2024-11-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">#python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/11/01/puts%E5%87%BD%E6%95%B0/" target="_self">
+          puts函数
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/11/01/puts%E5%87%BD%E6%95%B0/" target="_self">
+        <div>
+          做了一个赣ctf上的题，没想到这漏洞如此简单我竟然没发现，真是浅薄了，在此记录一下 puts()函数： 123#include &lt;stdio.h&gt;int puts(const char *s);  puts()函数的作用是持续输出字符指针s指向的字符，直到遇到空字符\0为止， 假设char s[256]中s指向的内容是由用户输入的 那么用户可以输入一个长度超过256的字符串即使机器只读
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-11-01 19:51" pubdate>
+              2024-11-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/pwn/" class="category-chain-item">pwn</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%B3%84%E6%BC%8F%E4%BF%A1%E6%81%AF/">#泄漏信息</a>
+            
+              <a href="/tags/glibc/">#glibc</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/11/01/python%E8%AF%AD%E6%B3%95%E4%B9%8B%E5%85%B3%E9%94%AE%E5%AD%97try/" target="_self">
           python语法之关键字try
         </a>
