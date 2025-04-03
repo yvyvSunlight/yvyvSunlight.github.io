@@ -19,15 +19,15 @@
   <meta name="author" content="yvyvSunlight">
   <meta name="keywords" content="">
   
-    <meta name="description" content="ELF1elf &#x3D; ELF(&quot;.&#x2F;attachment&quot;) ELF对象的属性elf.symbols字典，存储符号表（包括函数、全局变量） elf.symbols[&quot;main&quot;]main函数的地址 elf.got字典，存储GOT表中各函数的表项地址 elf.got[&quot;puts&quot;]puts在GOT表中的地址 elf.plt字典，存储PLT表中">
+    <meta name="description" content="ELF1exe &#x3D; ELF(&quot;.&#x2F;attachment&quot;) ELF对象的属性四大用途  sym 查找符号地址 符号表 函数、变量地址 plt 获取plt表地址  &#x3D;&#x3D;plt表和got表相比最重要的特性就是plt表可执行而got表不可执行 plt会跳转到相应函数处的地址&#x3D;&#x3D;   got 获取got表地址 查找字符串的地址 .search[b">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pwntools使用">
 <meta property="og:url" content="http://example.com/2025/03/04/pwntools%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="yvyvSunlight">
-<meta property="og:description" content="ELF1elf &#x3D; ELF(&quot;.&#x2F;attachment&quot;) ELF对象的属性elf.symbols字典，存储符号表（包括函数、全局变量） elf.symbols[&quot;main&quot;]main函数的地址 elf.got字典，存储GOT表中各函数的表项地址 elf.got[&quot;puts&quot;]puts在GOT表中的地址 elf.plt字典，存储PLT表中">
+<meta property="og:description" content="ELF1exe &#x3D; ELF(&quot;.&#x2F;attachment&quot;) ELF对象的属性四大用途  sym 查找符号地址 符号表 函数、变量地址 plt 获取plt表地址  &#x3D;&#x3D;plt表和got表相比最重要的特性就是plt表可执行而got表不可执行 plt会跳转到相应函数处的地址&#x3D;&#x3D;   got 获取got表地址 查找字符串的地址 .search[b">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-03-04T02:01:23.000Z">
-<meta property="article:modified_time" content="2025-03-18T08:33:24.502Z">
+<meta property="article:modified_time" content="2025-03-27T13:26:43.569Z">
 <meta property="article:author" content="yvyvSunlight">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          305 字
+          413 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          3 分钟
+          4 分钟
         
       </span>
     
@@ -275,23 +275,32 @@
             
               <div class="markdown-body">
                 
-                <h1 id="ELF"><a href="#ELF" class="headerlink" title="ELF"></a>ELF</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">elf = ELF(<span class="hljs-string">&quot;./attachment&quot;</span>)<br></code></pre></td></tr></table></figure>
-<h1 id="ELF对象的属性"><a href="#ELF对象的属性" class="headerlink" title="ELF对象的属性"></a>ELF对象的属性</h1><p><code>elf.symbols</code><br><strong>字典</strong>，存储符号表（包括函数、全局变量）</p>
-<p><code>elf.symbols[&quot;main&quot;]</code><br><code>main</code>函数的地址</p>
-<p><code>elf.got</code><br><strong>字典</strong>，存储GOT表中各函数的表项地址</p>
-<p><code>elf.got[&quot;puts&quot;]</code><br><code>puts</code>在GOT表中的地址</p>
-<p><code>elf.plt</code><br><strong>字典</strong>，存储PLT表中各函数的入口地址</p>
-<p><code>elf.plt[&quot;puts&quot;]</code><br><code>puts</code>在PLT表中的入口地址</p>
-<p><code>elf.symbols[&quot;puts&quot;]</code><br>简写<code>elf.sym</code><br>如果<code>puts</code>是静态链接，<br>会返回<code>puts</code>在<code>.text</code>段中的真实地址（<code>.puts</code>代码的起始地址）<br>如果<code>puts</code>是动态链接</p>
+                <h1 id="ELF"><a href="#ELF" class="headerlink" title="ELF"></a>ELF</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">exe = ELF(<span class="hljs-string">&quot;./attachment&quot;</span>)<br></code></pre></td></tr></table></figure>
+<h1 id="ELF对象的属性"><a href="#ELF对象的属性" class="headerlink" title="ELF对象的属性"></a>ELF对象的属性</h1><p><strong>四大用途</strong></p>
+<ul>
+<li><strong>sym 查找符号地址 符号表 函数、变量地址</strong></li>
+<li><strong>plt 获取plt表地址</strong>  &#x3D;&#x3D;plt表和got表相比最重要的特性就是plt表可执行而got表不可执行 plt会跳转到相应函数处的地址&#x3D;&#x3D;  </li>
+<li><strong>got 获取got表地址</strong></li>
+<li><strong>查找字符串的地址 .search[b’&#x2F;bin&#x2F;sh’]</strong></li>
+</ul>
+<p><code>exe.symbols</code> <code>exe.sym</code><br><strong>字典</strong>，存储符号表（包括函数、全局变量）</p>
+<p><code>exe.sym[&quot;main&quot;]</code><br><code>main</code>函数的地址</p>
+<p><code>exe.got</code><br><strong>字典</strong>，存储GOT表中各函数的表项地址</p>
+<p><code>exe.got[&quot;puts&quot;]</code><br><code>puts</code>在GOT表中的地址</p>
+<p><code>exe.plt</code><br><strong>字典</strong>，存储PLT表中各函数的入口地址</p>
+<p><code>exe.plt[&quot;puts&quot;]</code><br><code>puts</code>在PLT表中的入口地址</p>
+<p><code>exe.symbols[&quot;puts&quot;]</code><br>简写<code>elf.sym</code><br>如果<code>puts</code>是静态链接，<br>会返回<code>puts</code>在<code>.text</code>段中的真实地址（<code>.puts</code>代码的起始地址）<br>如果<code>puts</code>是动态链接</p>
 <ul>
 <li>返回的是<code>puts@plt</code>,也就是<code>puts</code>在PLT中的地址</li>
 <li>PLT只是一个跳转stub，并不是真正的<code>puts</code>实现</li>
 <li>如果想要<code>puts</code>在<code>libc</code>中的真实地址，需要用<code>elf.got[&quot;puts&quot;]</code>，并在程序运行时解析它。</li>
 </ul>
-<p><strong>查找字符串</strong><br><code>elf.search[b&quot;/bin/sh&quot;]</code><br>在ELF文件中搜索字符串<code>/bin/sh</code>的地址<br><code>elf.search[b&quot;flag&quot;]</code><br>在ELF文件中搜索“flag”相关的字符串</p>
+<p><strong>查找字符串</strong><br><code>exe.search[b&quot;/bin/sh&quot;]</code><br>在ELF文件中搜索字符串<code>/bin/sh</code>的地址<br><code>exe.search[b&quot;flag&quot;]</code><br>在ELF文件中搜索“flag”相关的字符串</p>
 <h1 id="误区"><a href="#误区" class="headerlink" title="误区"></a>误区</h1><p>可能的误区是，pwntools在静态分析时给出的地址是相对于文件中的偏移，而不是实际运行时的绝对地址。</p>
 <h1 id="python脚本常用语法"><a href="#python脚本常用语法" class="headerlink" title="python脚本常用语法"></a>python脚本常用语法</h1><hr>
-<h1 id="gdb-attach-之掌握时机"><a href="#gdb-attach-之掌握时机" class="headerlink" title="gdb.attach()之掌握时机"></a>gdb.attach()之掌握时机</h1><hr>
+<h1 id="gdb-attach-之掌握时机"><a href="#gdb-attach-之掌握时机" class="headerlink" title="gdb.attach()之掌握时机"></a>gdb.attach()之掌握时机</h1><p>最好在等待输入之间<br>在send之前加pause()</p>
+<hr>
+<h1 id="ELF对象于libcsearcher函数区别"><a href="#ELF对象于libcsearcher函数区别" class="headerlink" title="ELF对象于libcsearcher函数区别"></a>ELF对象于libcsearcher函数区别</h1><hr>
 <p><a target="_blank" rel="noopener" href="https://newym.github.io/2024/11/06/GDB%E8%B0%83%E8%AF%95%E6%8C%87%E5%8D%97/">PWN题GDB调试指南 | NEWYM</a></p>
 
                 
@@ -376,9 +385,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/03/04/%E5%87%BD%E6%95%B0%E6%A0%88%E5%B8%A7/" title="函数栈帧">
+                      <a href="/2025/03/04/C%E5%87%BD%E6%95%B0%E6%A0%88%E5%B8%A7/" title="C函数栈帧">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">函数栈帧</span>
+                        <span class="hidden-mobile">C函数栈帧</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

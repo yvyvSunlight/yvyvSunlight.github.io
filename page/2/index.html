@@ -229,15 +229,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/03/09/%E5%89%8D%E7%AB%AF%E5%AE%9E%E7%8E%B0%E6%89%AB%E6%8F%8F%E4%BA%8C%E7%BB%B4%E7%A0%81/" target="_self">
-          前端实现扫描二维码
+        <a href="/2025/03/26/UAF/" target="_self">
+          UAF
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/09/%E5%89%8D%E7%AB%AF%E5%AE%9E%E7%8E%B0%E6%89%AB%E6%8F%8F%E4%BA%8C%E7%BB%B4%E7%A0%81/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/26/UAF/" target="_self">
         <div>
-          生成设计一下路径 graph TD A[A1] --&gt; C[B1] B[A2] --&gt; C C --&gt; D[C1]   在线二维码生成器：互联二维码生成器_二维码在线制作_应用方案提供商 目标地点”A1” 作为文本生成二维码： 然后利用本地存储存下已经走过的路径即可  可以将路径标记设计得更简洁一点： graph TD A1[0] --&gt; B1[1] A2[0] --&gt
+          use after free free()函数所做的是把指针指向的chunk释放了，使这个chunk不再是堆块了但是这个指针仍然指向这个chunk,这个指针的值以及这个chunk的内容都不会被改变 如果你重新申请了这块被释放的chunk，那么只要这个指针的值没有变，这个chunk就还能被这个指针使用 如果原来的指针-&gt;原来的chunk是有固定功能的，如果你申请内存时又成功分配到了这个chun
         </div>
       </a>
 
@@ -245,8 +245,412 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-09 13:12" pubdate>
-              2025-03-09
+            <time datetime="2025-03-26 22:27" pubdate>
+              2025-03-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/pwn/" class="category-chain-item">pwn</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%A0%86%E5%88%A9%E7%94%A8/">#堆利用</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/03/19/%E5%85%B3%E4%BA%8Epwn%E9%A2%98%E7%9A%84%E7%8E%AF%E5%A2%83/" target="_self">
+          关于pwn题的环境
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/19/%E5%85%B3%E4%BA%8Epwn%E9%A2%98%E7%9A%84%E7%8E%AF%E5%A2%83/" target="_self">
+        <div>
+          关于pwn题的环境目前我所已知的三种较为推荐的方式：将本地环境和远程环境相统一  patchelf + glibc-all-in-one更改pwn题libc  在脚本中打开本地进程这么写 1process([&quot;ld路径“, &quot;./题目&quot;], env=&#123;&quot;LD_PRELOAD&quot;:&quot;libc路径&quot;&#125;)  dock
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-03-19 22:36" pubdate>
+              2025-03-19
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/03/19/%E5%A0%86%E5%9F%BA%E7%A1%80/" target="_self">
+          堆基础
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/19/%E5%A0%86%E5%9F%BA%E7%A1%80/" target="_self">
+        <div>
+          brk  系统调用  将进程的堆结束地址(prgram break)设置为指定的值，从而控制堆内存的大小。可以扩展或收缩堆内存 12#include &lt;unistd.h&gt;int brk(void *addr);  addr：指定新的堆结束地址 成功时，返回0失败时，返回-1，设置errno为以下之一：  ENOMEN 内存不足，无法扩展到指定的地址 EINVAL 指定的地址无效
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-03-19 17:17" pubdate>
+              2025-03-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/pwn/" class="category-chain-item">pwn</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/03/18/%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0%E4%B8%8E%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" target="_self">
+          危险函数与常用函数
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/18/%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0%E4%B8%8E%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" target="_self">
+        <div>
+          危险函数gets(s)gets() 函数从标准输入读取一行字符，直到遇到换行符（\n）或文件结束符（EOF）。换行符不会被存储在目标字符串中，而是被替换为 null 终止符（\0）。puts(const char s)*持续输出s指向的字符 直到遇到终止符\0  1char *strncpy(char *dest, const char *src, size_t n);  dest 目标字符串的指
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-03-18 14:55" pubdate>
+              2025-03-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/pwn/" class="category-chain-item">pwn</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/03/18/gdb%E8%B7%9F%E8%BF%9B%E7%88%B6%E8%BF%9B%E7%A8%8B%E6%88%96%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E9%97%AE%E9%A2%98/" target="_self">
+          gdb跟进父进程或子进程的问题
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/18/gdb%E8%B7%9F%E8%BF%9B%E7%88%B6%E8%BF%9B%E7%A8%8B%E6%88%96%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E9%97%AE%E9%A2%98/" target="_self">
+        <div>
+          
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-03-18 12:12" pubdate>
+              2025-03-18
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/03/17/ios%E7%AD%BE%E5%90%8D/" target="_self">
+          ios签名
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/17/ios%E7%AD%BE%E5%90%8D/" target="_self">
+        <div>
+          ios app 开发门槛真是高 没有mac和xcode就算了 我用vscode + uniapp + hbuilder还不行（windows）结果真机调试运行还得注册开发者账号 + 获取ios签名这就是高贵的苹果✌吗 😭  在windows上开发调试ios app途径：  注册开发者账号 + 签名  官方正经 途径但是 $99&#x2F;年的价格 + 注册流程困难还是算了   使用爱思助手进行自
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-03-17 22:01" pubdate>
+              2025-03-17
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E5%90%8E%E7%AB%AF/" class="category-chain-item">前后端</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/ios/">#ios</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/03/16/conda%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8C%97/" target="_self">
+          conda不完全指北
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/16/conda%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8C%97/" target="_self">
+        <div>
+          安装anaconda后，将anaconda适配到powershell 每次启动powershell都会默认激活虚拟环境base查看pip版本发现是anaconda中的pip查看python版本和安装位置发现也是anaconda中的 如何取消默认激活？  查看本机conda默认配置 1conda config --show  我们可以看到auto_activate_base属性默认设置为 True将
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-03-16 21:54" pubdate>
+              2025-03-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Environment/" class="category-chain-item">Environment</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/03/16/docker%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8C%97/" target="_self">
+          docker使用指南
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/16/docker%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8C%97/" target="_self">
+        <div>
+          使用Docker搭建CTF Pwn做题环境 为了保证利用脚本能够正常打通， 我们通常需要在本地准备相同的运行环境， 并且在远程利用之前先在本地进行测试  如果为每个不同的运行环境都单独准备一个Ubuntu虚拟机，则太不优雅了  Docker 操作系统层面上的虚拟化方案能够非常便捷地搭建不同pwn题所对应的原始环境   [!note] 对比虚拟机硬件层面的虚拟化方案  Docker使用Docker入
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-03-16 21:51" pubdate>
+              2025-03-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Environment/" class="category-chain-item">Environment</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/03/15/Nginx/" target="_self">
+          Nginx
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/15/Nginx/" target="_self">
+        <div>
+          怀着复杂悲伤的心情写这篇文章顶着十分困倦的状态  Nginx是高性能的HTTP和反向代理web服务器，处理高并发能力十分强大，支持热部署，启动简单，可以做到不间断运行。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-03-15 08:05" pubdate>
+              2025-03-15
             </time>
           </div>
         
@@ -283,15 +687,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/03/07/%E6%B5%81%E6%B0%B4%E7%BA%BFCPU/" target="_self">
-          流水线CPU
+        <a href="/2025/03/14/%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA%E4%B8%8E%E9%83%A8%E7%BD%B2/" target="_self">
+          静态网站搭建与部署
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/07/%E6%B5%81%E6%B0%B4%E7%BA%BFCPU/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/14/%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA%E4%B8%8E%E9%83%A8%E7%BD%B2/" target="_self">
         <div>
-          
+          三更半夜了搁这儿学网站部署，不嘻嘻😡  1. 注册域名搭建静态网站之前，首先得有个网站域名  应该有了，此步略  2.创建BucketCI&#x2F;CD在项目中写一个.github/workflows/ci.yml文件  参考：GitHub Actions 进行前端自动化部署如何使用 GitHub Actions 实现前端项目的自动化部署到服务器 - 掘金
         </div>
       </a>
 
@@ -299,74 +703,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-07 14:16" pubdate>
-              2025-03-07
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/03/06/one_gadget/" target="_self">
-          one_gadget
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/06/one_gadget/" target="_self">
-        <div>
-          [原创]pwn中one_gadget的使用技巧-Pwn-看雪-安全社区|安全招聘|kanxue.com ubuntu中one_gadget的安装下载_onegadget下载-CSDN博客
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-06 14:16" pubdate>
-              2025-03-06
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/03/05/ret2shellcode/" target="_self">
-          ret2shellcode
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/05/ret2shellcode/" target="_self">
-        <div>
-          call指令无论是x86还是x86_64call指令的基本功能都是一致的  保存返回地址将下一条指令的地址（返回地址）压入栈中。 跳转到子程序call指令将程序的控制权转移到指定的目标地址   编写shellcodepwntools生成1shellcode = asm(shellcraft.sh()) 1shellcode = asm(shellcraft.cat(&#x27;flag&#x27;
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-05 20:59" pubdate>
-              2025-03-05
+            <time datetime="2025-03-14 00:56" pubdate>
+              2025-03-14
             </time>
           </div>
         
@@ -381,331 +719,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/pwn/" class="category-chain-item">pwn</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/03/04/%E6%9B%B4%E6%94%B9pwn%E9%A2%98libc/" target="_self">
-          更改pwn题libc
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/04/%E6%9B%B4%E6%94%B9pwn%E9%A2%98libc/" target="_self">
-        <div>
-          参考：  ★pwn 更改pwn题libc保姆级教程★_pwn libc-CSDN博客  glibc-all-in-one我已经有了仓库链接：https://github.com/matrix1001/glibc-all-in-one patchelf我也有了 glibc-all-in-one下载与调整libc如果题目没有给libc则需要泄漏并使用LibcSearcher 如果题目给了libc：
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-04 16:05" pubdate>
-              2025-03-04
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/pwn/" class="category-chain-item">pwn</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/03/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/" target="_self">
-          计算机使用技巧
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/" target="_self">
-        <div>
-          ctrl+shift+v ： 以纯文本方式zhantie
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-04 14:28" pubdate>
-              2025-03-04
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/chore/" class="category-chain-item">chore</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/03/04/%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A/" target="_self">
-          调用约定
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/04/%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A/" target="_self">
-        <div>
-          指针型即地址 int &amp; pointer
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-04 13:47" pubdate>
-              2025-03-04
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/pwn/" class="category-chain-item">pwn</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/03/04/%E5%87%BD%E6%95%B0%E6%A0%88%E5%B8%A7/" target="_self">
-          函数栈帧
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/04/%E5%87%BD%E6%95%B0%E6%A0%88%E5%B8%A7/" target="_self">
-        <div>
-          x86_64 &amp; x86函数基本结构 123456push rbpmov  rbp, rsp...mov  rsp, rbppop  rbpret 进入新函数的栈帧前，要要将调用函数指令的下一条指令地址压入栈里（调用者的栈帧）。 64位再调用新函数前rsp是00调用新函数后先把下一条指令的地址：jmp main+175 压入栈此时rsp是08因此在新函数栈帧中第一个push前rsp需要是0
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-04 10:18" pubdate>
-              2025-03-04
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/pwn/" class="category-chain-item">pwn</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/03/04/pwntools%E4%BD%BF%E7%94%A8/" target="_self">
-          pwntools使用
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/04/pwntools%E4%BD%BF%E7%94%A8/" target="_self">
-        <div>
-          ELF1elf = ELF(&quot;./attachment&quot;) ELF对象的属性elf.symbols字典，存储符号表（包括函数、全局变量） elf.symbols[&quot;main&quot;]main函数的地址 elf.got字典，存储GOT表中各函数的表项地址 elf.got[&quot;puts&quot;]puts在GOT表中的地址 elf.plt字典，存储PLT表中
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-04 10:01" pubdate>
-              2025-03-04
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/pwn/" class="category-chain-item">pwn</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/03/03/ret2libc-1/" target="_self">
-          ret2libc
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/03/ret2libc-1/" target="_self">
-        <div>
-          libc基地址 + 函数偏移量 &#x3D; 函数真实地址  问题是&#x3D;&#x3D;怎么找libc基地址&#x3D;&#x3D;呢？&#x3D;&gt; 泄漏一个函数的真实地址  有时间了解一下 libc的延迟绑定技术 got表-plt表  泄漏一个函数的真实地址&#x3D;&gt; 一般方法是采用&#x3D;&#x3D;got表泄漏&#x3D;&#x3D;以puts函数为例只要之前执行
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-03 22:27" pubdate>
-              2025-03-03
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/pwn/" class="category-chain-item">pwn</a>
+  <a href="/categories/%E5%89%8D%E5%90%8E%E7%AB%AF/" class="category-chain-item">前后端</a>
   
   
 
@@ -725,7 +739,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#board">6</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

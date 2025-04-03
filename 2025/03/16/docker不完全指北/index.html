@@ -30,8 +30,10 @@
 <meta property="og:image" content="http://example.com/2024/10/29/hello-world/file-20250318205757389.png">
 <meta property="og:image" content="http://example.com/2024/10/29/hello-world/file-20250318205927660.png">
 <meta property="og:image" content="http://example.com/2024/10/29/hello-world/file-20250318213056586.png">
+<meta property="og:image" content="http://example.com/2024/10/29/hello-world/file-20250322114850892.png">
+<meta property="og:image" content="http://example.com/2024/10/29/hello-world/file-20250322194318792.png">
 <meta property="article:published_time" content="2025-03-16T13:51:54.000Z">
-<meta property="article:modified_time" content="2025-03-18T16:26:58.659Z">
+<meta property="article:modified_time" content="2025-04-03T14:31:59.859Z">
 <meta property="article:author" content="yvyvSunlight">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2024/10/29/hello-world/file-20250318205700546.png">
@@ -227,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          616 字
+          1.4k 字
         
       </span>
     
@@ -238,7 +240,7 @@
         
         
         
-          6 分钟
+          12 分钟
         
       </span>
     
@@ -295,7 +297,7 @@
 <p><img src="/2024/10/29/hello-world/file-20250318205700546.png" srcset="/img/loading.gif" lazyload><br><img src="/2024/10/29/hello-world/file-20250318205757389.png" srcset="/img/loading.gif" lazyload></p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs awk">❯ cat <span class="hljs-regexp">/etc/</span>ssh/ssh_config<br><br><span class="hljs-comment"># This is the ssh client system-wide configuration file.  See</span><br><span class="hljs-comment"># ssh_config(5) for more information.  This file provides defaults for</span><br><span class="hljs-comment"># users, and the values can be changed in per-user configuration files</span><br><span class="hljs-comment"># or on the command line.</span><br><br><span class="hljs-comment"># Configuration data is parsed as follows:</span><br><span class="hljs-comment">#  1. command line options</span><br><span class="hljs-comment">#  2. user-specific file</span><br><span class="hljs-comment">#  3. system-wide file</span><br><span class="hljs-comment"># Any configuration value is only changed the first time it is set.</span><br><span class="hljs-comment"># Thus, host-specific definitions should be at the beginning of the</span><br><span class="hljs-comment"># configuration file, and defaults at the end.</span><br><br><span class="hljs-comment"># Site-wide defaults for some commonly used options.  For a comprehensive</span><br><span class="hljs-comment"># list of available options, their meanings and defaults, please see the</span><br><span class="hljs-comment"># ssh_config(5) man page.</span><br><br>Include <span class="hljs-regexp">/etc/</span>ssh<span class="hljs-regexp">/ssh_config.d/</span>*.conf<br><br>Host *<br><span class="hljs-comment">#   ForwardAgent no</span><br><span class="hljs-comment">#   ForwardX11 no</span><br><span class="hljs-comment">#   ForwardX11Trusted yes</span><br><span class="hljs-comment">#   PasswordAuthentication yes</span><br><span class="hljs-comment">#   HostbasedAuthentication no</span><br><span class="hljs-comment">#   GSSAPIAuthentication no</span><br><span class="hljs-comment">#   GSSAPIDelegateCredentials no</span><br><span class="hljs-comment">#   GSSAPIKeyExchange no</span><br><span class="hljs-comment">#   GSSAPITrustDNS no</span><br><span class="hljs-comment">#   BatchMode no</span><br><span class="hljs-comment">#   CheckHostIP yes</span><br><span class="hljs-comment">#   AddressFamily any</span><br><span class="hljs-comment">#   ConnectTimeout 0</span><br><span class="hljs-comment">#   StrictHostKeyChecking ask</span><br><span class="hljs-comment">#   IdentityFile ~/.ssh/id_rsa</span><br><span class="hljs-comment">#   IdentityFile ~/.ssh/id_dsa</span><br><span class="hljs-comment">#   IdentityFile ~/.ssh/id_ecdsa</span><br><span class="hljs-comment">#   IdentityFile ~/.ssh/id_ed25519</span><br><span class="hljs-comment">#   Port 22</span><br><span class="hljs-comment">#   Ciphers aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc</span><br><span class="hljs-comment">#   MACs hmac-md5,hmac-sha1,umac-64@openssh.com</span><br><span class="hljs-comment">#   EscapeChar ~</span><br><span class="hljs-comment">#   Tunnel no</span><br><span class="hljs-comment">#   TunnelDevice any:any</span><br><span class="hljs-comment">#   PermitLocalCommand no</span><br><span class="hljs-comment">#   VisualHostKey no</span><br><span class="hljs-comment">#   ProxyCommand ssh -q -W %h:%p gateway.example.com</span><br><span class="hljs-comment">#   RekeyLimit 1G 1h</span><br><span class="hljs-comment">#   UserKnownHostsFile ~/.ssh/known_hosts.d/%k</span><br>    SendEnv LANG LC_*<br>    HashKnownHosts yes<br>    GSSAPIAuthentication yes<br></code></pre></td></tr></table></figure>
 <p><img src="/2024/10/29/hello-world/file-20250318205927660.png" srcset="/img/loading.gif" lazyload></p>
-<h1 id="网络问题"><a href="#网络问题" class="headerlink" title="网络问题"></a>网络问题</h1><p>ping 命令不走配置代理的原因<br>通过配置代理是不能影响ping命令的。大家都知道ping命令是直接使用icmp协议来检测网址是否可达的。而我们配置的代理是直接配置了http代理。</p>
+<h2 id="网络问题"><a href="#网络问题" class="headerlink" title="网络问题"></a>网络问题</h2><p>ping 命令不走配置代理的原因<br>通过配置代理是不能影响ping命令的。大家都知道ping命令是直接使用icmp协议来检测网址是否可达的。而我们配置的代理是直接配置了http代理。</p>
 <p>Http是应用层协议，icmp是网络层协议。配置代理过程是配置了应用层协议，是不会影响网络层协议的，也就解释了设置http代理以后在终端还是ping不通Google</p>
 <p>可以用curl</p>
 <hr>
@@ -315,7 +317,7 @@
 <p>二、在配置文件中添加代理</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-string">Environment=&quot;HTTP_PROXY=http://127.0.0.1:7890&quot;</span> <span class="hljs-string">Environment=&quot;HTTPS_PROXY=http://127.0.0.1:7890&quot;</span><br></code></pre></td></tr></table></figure>
 <p>三、重启docker</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">sudo</span> systemctl restart docker<br></code></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">sudo</span> systemctl restart docker<br><span class="hljs-comment"># 或（wsl）</span><br><span class="hljs-built_in">sudo</span> service restart docker<br></code></pre></td></tr></table></figure>
 <p>四、查看环境变量</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">sudo</span> systemctl show --property=Environment docker<br></code></pre></td></tr></table></figure>
 
@@ -327,8 +329,13 @@
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sh">docker images<br><br><span class="hljs-comment"># 包括中间层</span><br>docker images all<br></code></pre></td></tr></table></figure>
 
 <hr>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sh">docker run \ <br>	   -d \ <br>	   -p 25000:22 \ <br>	   --name=pwn24 \ <br>	   -v ~/ctfDojo:/ctfDojo \ <br>	   pwnenv_ubuntu24<br></code></pre></td></tr></table></figure>
+<p>构建镜像</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">docker build -t pwnenv_ubuntu24 .<br></code></pre></td></tr></table></figure>
+<p>需指定tag（镜像名称）和构建上下文</p>
+<p>创建并启动容器<br>    守卫模式（后台运行）<br>    映射端口<br>    命名容器<br>    挂载目录<br>    镜像名</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment"># 创建并启动容器</span><br>docker run \ <br>	   -d \ <br>	   -p 25000:22 \ <br>	   --name=pwn14 \ <br>	   -v ~/ctfDojo:/ctfDojo \ <br>	   pwnenv_ubuntu14<br><br><span class="hljs-comment"># 仅创建，不启动容器</span><br>docker create<br></code></pre></td></tr></table></figure>
 
+<p>在已经运行的容器中执行命令 指定工作目录<br>    设置环境变量TERM（显示相关）<br>    指定容器用户<br>    -i 交互模式 -t 分配伪终端（用于交互式会话） 并指定目标容器<br>    启动bash</p>
 <figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs livescript">docker exec -w /ctfDojo <span class="hljs-string">\</span><br>       -e TERM=xterm-<span class="hljs-number">256color</span> <span class="hljs-string">\</span><br>       -u ubuntu <span class="hljs-string">\</span><br>       -<span class="hljs-literal">it</span> pwn24 <span class="hljs-string">\</span><br>       bash<br></code></pre></td></tr></table></figure>
 
 <hr>
@@ -337,9 +344,70 @@
 
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">ssh ubuntu@localhost -p 25000<br></code></pre></td></tr></table></figure>
 
-<p>停止容器</p>
+
+<hr>
+<h2 id="docker常用命令"><a href="#docker常用命令" class="headerlink" title="docker常用命令"></a>docker常用命令</h2><p>停止容器</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">docker stop &lt;name&gt;<br></code></pre></td></tr></table></figure>
 
+<p>启动容器</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment"># 启动已停止或已创建的容器</span><br>docker start &lt;容器ID或容器名&gt;<br></code></pre></td></tr></table></figure>
+
+<p>查看容器</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment"># 查看运行中的容器</span><br>docker ps <br><br><span class="hljs-comment"># 查看所有容器(包括停止的容器)</span><br>docker ps -a<br></code></pre></td></tr></table></figure>
+
+<p>删除容器</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment"># 删除单个容器</span><br>docker <span class="hljs-built_in">rm</span> &lt;容器ID或容器名&gt;<br></code></pre></td></tr></table></figure>
+
+
+<p>查看镜像列表</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">docker images<br></code></pre></td></tr></table></figure>
+
+<p>删除镜像</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment"># 删除单个镜像</span><br>docker rmi &lt;镜像ID或镜像名:标签&gt;<br><br><span class="hljs-comment"># 删除所有镜像</span><br>docker rmi $(docker images -q)<br><br><span class="hljs-comment"># 删除所有未使用的镜像</span><br>docker images prune<br></code></pre></td></tr></table></figure>
+
+
+<hr>
+<p>docker pull可以成功但是docker build失败的奇怪问题</p>
+<h3 id="docker-build-和-docker-pull-的行为不同"><a href="#docker-build-和-docker-pull-的行为不同" class="headerlink" title="docker build 和 docker pull 的行为不同"></a><strong><code>docker build</code> 和 <code>docker pull</code> 的行为不同</strong></h3><ul>
+<li><p>**<code>docker pull</code>**：</p>
+<ul>
+<li>直接从 Docker Hub 拉取镜像到本地。</li>
+<li>如果网络连接正常，且镜像可以被成功解析和下载，<code>docker pull</code> 通常不会有问题。</li>
+</ul>
+</li>
+<li><p>**<code>docker build</code>**：</p>
+<ul>
+<li>在构建过程中，Docker 会尝试解析 <code>Dockerfile</code> 中的 <code>FROM</code> 指令，并从 Docker Hub 拉取基础镜像。</li>
+<li>如果 Docker 守护进程的网络配置（如代理、DNS）有问题，可能导致 <code>docker build</code> 无法解析或拉取镜像，即使 <code>docker pull</code> 可以成功。</li>
+</ul>
+</li>
+</ul>
+<p>在<code>sudo vim /etc/docker/daemon.json</code>设置dns方法是不行的（8.8.8.8和8.8.4.4）仅5s就error 显示报错connection reset </p>
+<p>但是上文方法二配置代理的方法还是有用的<br>配置代理后，docker pull可以成功（否则不能成功）<br>然后再docker build即可成功</p>
+<hr>
+<p>补：<br><img src="/2024/10/29/hello-world/file-20250322114850892.png" srcset="/img/loading.gif" lazyload><br><del>今天尝试在Dockerfile文件前面开头处添加配置代理即可直接build过程中拉取成</del><br>（看我放的位置，其实和它没关系）</p>
+<p>再补：<br>并非，去掉之后也能拉取成功，看来直接build得看运气</p>
+<hr>
+<h1 id="pwndocker"><a href="#pwndocker" class="headerlink" title="pwndocker"></a>pwndocker</h1><p>skysider&#x2F;pwndocker</p>
+<hr>
+<h1 id="关于pwn题的环境"><a href="#关于pwn题的环境" class="headerlink" title="关于pwn题的环境"></a>关于pwn题的环境</h1><p>目前我所已知的三种较为推荐的方式：将本地环境和远程环境相统一</p>
+<ol>
+<li><p>patchelf + glibc-all-in-one<br><a href="%E6%9B%B4%E6%94%B9pwn%E9%A2%98libc.md">更改pwn题libc</a></p>
+</li>
+<li><p>在脚本中打开本地进程这么写</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">process([<span class="hljs-string">&quot;ld路径“, &quot;</span>./题目<span class="hljs-string">&quot;], env=&#123;&quot;</span>LD_PRELOAD<span class="hljs-string">&quot;:&quot;</span>libc路径<span class="hljs-string">&quot;&#125;)</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>docker pwndocker</p>
+</li>
+</ol>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Chary/p/18096678">如何优雅的给 Docker 配置网络代理 - CharyGao - 博客园</a></p>
+<h1 id="Docker网络模式"><a href="#Docker网络模式" class="headerlink" title="Docker网络模式"></a>Docker网络模式</h1><h2 id="docker容器内的网络问题"><a href="#docker容器内的网络问题" class="headerlink" title="docker容器内的网络问题"></a>docker容器内的网络问题</h2><p>我的层次结构是<br>windows -&gt; ubuntu(wsl2) -&gt; ubuntu(docker)<br>（docker用的是linux版docker）<br>windows上有代理服务</p>
+<p>我实在没搞好怎么在docker桥接模式下走代理</p>
+<p>于是我使用host模式</p>
+<p>终于搞好：<br><img src="/2024/10/29/hello-world/file-20250322194318792.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="docker网络问题总结"><a href="#docker网络问题总结" class="headerlink" title="docker网络问题总结"></a>docker网络问题总结</h1><p>docker网络问题中的三个代理：<br>系统代理       docker拉取镜像时不会自动使用系统的代理设置，如果需要通过代理拉取镜像，需要手动配置 Docker 的代理设置。<br>docker拉取镜像时走的代理  <code>/etc/systemd/system/docker.service.d/http-proxy.conf</code>中设置（<code>/etc/docker/daemon.json</code>可能也可以）<br>docker容器走的代理  和docker网络模式有关</p>
+<p>以上。</p>
 
                 
               </div>

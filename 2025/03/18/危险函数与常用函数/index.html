@@ -27,7 +27,7 @@
 <meta property="og:description" content="危险函数gets(s)gets() 函数从标准输入读取一行字符，直到遇到换行符（\n）或文件结束符（EOF）。换行符不会被存储在目标字符串中，而是被替换为 null 终止符（\0）。puts(const char s)*持续输出s指向的字符 直到遇到终止符\0  1char *strncpy(char *dest, const char *src, size_t n);  dest 目标字符串的指">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-03-18T06:55:08.000Z">
-<meta property="article:modified_time" content="2025-03-18T07:56:52.480Z">
+<meta property="article:modified_time" content="2025-04-02T04:13:25.883Z">
 <meta property="article:author" content="yvyvSunlight">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          125 字
+          466 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          2 分钟
+          4 分钟
         
       </span>
     
@@ -285,7 +285,15 @@
 </ul>
 <p>是<strong>安全</strong>的，n限制了最大字符数</p>
 <hr>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;unistd.h&gt;</span></span><br><br><span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> <span class="hljs-title function_">alarm</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> seconds)</span>;<br></code></pre></td></tr></table></figure>
+<p><code>seconds</code>：​指定在多少秒后发送 <code>SIGALRM</code> 信号。如果设置为 0，则取消之前设置的闹钟。</p>
+<p>实现定时触发函数的功能</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;unistd.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;signal.h&gt;</span></span><br><br><span class="hljs-comment">// 信号处理函数</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">handle_sigalrm</span><span class="hljs-params">(<span class="hljs-type">int</span> sig)</span> &#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;收到信号 %d：闹钟触发\n&quot;</span>, sig);<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">// 设置 SIGALRM 信号的处理函数</span><br>    signal(SIGALRM, handle_sigalrm);<br><br>    <span class="hljs-comment">// 设置闹钟，在 5 秒后触发 SIGALRM 信号</span><br>    alarm(<span class="hljs-number">5</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;闹钟设置为 5 秒后触发\n&quot;</span>);<br><br>    <span class="hljs-comment">// 无限循环，等待信号</span><br>    <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;程序运行中...\n&quot;</span>);<br>        sleep(<span class="hljs-number">1</span>);<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
 
+<p>输出：</p>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs erlang">闹钟设置为 <span class="hljs-number">5</span> 秒后触发<br>程序运行中...<br>程序运行中...<br>程序运行中...<br>程序运行中...<br>程序运行中...<br>收到信号 <span class="hljs-number">14</span>：闹钟触发<br>程序运行中...<br>...<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="注意事项：-一个进程同时只能有一个闹钟定时器。如果在之前的闹钟尚未触发时再次调用-alarm，新的定时将覆盖之前的设置。​菜鸟教程-6nocbtm’s-Blog-6博客园-6-要取消已设置的闹钟，可以调用-alarm-0-。​nocbtm’s-Blog-2旧时光文档-2博客园-2-SIGALRM-信号的默认行为是终止进程，因此通常需要自定义信号处理函数来定义触发后的操作。"><a href="#注意事项：-一个进程同时只能有一个闹钟定时器。如果在之前的闹钟尚未触发时再次调用-alarm，新的定时将覆盖之前的设置。​菜鸟教程-6nocbtm’s-Blog-6博客园-6-要取消已设置的闹钟，可以调用-alarm-0-。​nocbtm’s-Blog-2旧时光文档-2博客园-2-SIGALRM-信号的默认行为是终止进程，因此通常需要自定义信号处理函数来定义触发后的操作。" class="headerlink" title="注意事项：- 一个进程同时只能有一个闹钟定时器。如果在之前的闹钟尚未触发时再次调用 alarm，新的定时将覆盖之前的设置。​菜鸟教程+6nocbtm’s Blog+6博客园+6- 要取消已设置的闹钟，可以调用 alarm(0)。​nocbtm’s Blog+2旧时光文档+2博客园+2- SIGALRM 信号的默认行为是终止进程，因此通常需要自定义信号处理函数来定义触发后的操作。"></a><strong>注意事项：</strong><br>- 一个进程同时只能有一个闹钟定时器。如果在之前的闹钟尚未触发时再次调用 <code>alarm</code>，新的定时将覆盖之前的设置。​<a target="_blank" rel="noopener" href="https://nocbtm.github.io/2019/09/11/linux-c-alarm%E5%87%BD%E6%95%B0/?utm_source=chatgpt.com">菜鸟教程+6nocbtm’s Blog+6博客园+6</a><br>- 要取消已设置的闹钟，可以调用 <code>alarm(0)</code>。​<a target="_blank" rel="noopener" href="https://docs.oldtimes.me/c.biancheng.net/cpp/html/334.html?utm_source=chatgpt.com">nocbtm’s Blog+2旧时光文档+2博客园+2</a><br>- <code>SIGALRM</code> 信号的默认行为是终止进程，因此通常需要自定义信号处理函数来定义触发后的操作。</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;dlfcn.h&gt;</span></span><br><br><span class="hljs-type">void</span> *<span class="hljs-title function_">dlopen</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *filename, <span class="hljs-type">int</span> flag)</span>;<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -367,6 +375,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2025/03/19/%E5%A0%86%E5%9F%BA%E7%A1%80/" title="堆基础">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">堆基础</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

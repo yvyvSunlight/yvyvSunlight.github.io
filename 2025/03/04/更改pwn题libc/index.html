@@ -33,8 +33,11 @@
 <meta property="og:image" content="http://example.com/2024/10/29/hello-world/ile-20250304172528104.png">
 <meta property="og:image" content="http://example.com/2024/10/29/hello-world/ile-20250304172733380.png">
 <meta property="og:image" content="http://example.com/2024/10/29/hello-world/ile-20250304173311500.png">
+<meta property="og:image" content="http://example.com/2024/10/29/hello-world/ile-20250328105141440.png">
+<meta property="og:image" content="http://example.com/2024/10/29/hello-world/ile-20250328105201892.png">
+<meta property="og:image" content="http://example.com/2024/10/29/hello-world/ile-20250328105248641.png">
 <meta property="article:published_time" content="2025-03-04T08:05:52.000Z">
-<meta property="article:modified_time" content="2025-03-04T12:24:03.054Z">
+<meta property="article:modified_time" content="2025-03-28T02:52:50.929Z">
 <meta property="article:author" content="yvyvSunlight">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2024/10/29/hello-world/ile-20250304161304899.png">
@@ -230,7 +233,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          482 字
+          516 字
         
       </span>
     
@@ -292,16 +295,17 @@
 <p>如果题目给了libc：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">strings libc.so.6 | grep ubuntu<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2024/10/29/hello-world/ile-20250304171540001.png" srcset="/img/loading.gif" lazyload><br>ubuntu版本为2.23-0ubuntu11.3<br>在glibc-all-in-one下</p>
+<p><img src="/2024/10/29/hello-world/ile-20250304171540001.png" srcset="/img/loading.gif" lazyload><br>glibc版本为2.23-0ubuntu11.3(主版本号-某一系统特定的版本修订号)<br>在glibc-all-in-one下</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">cat</span> list<br></code></pre></td></tr></table></figure>
 <p><img src="/2024/10/29/hello-world/ile-20250304172105081.png" srcset="/img/loading.gif" lazyload><br>可以查看所有能够下载的libc版本<br><img src="/2024/10/29/hello-world/ile-20250304172234119.png" srcset="/img/loading.gif" lazyload></p>
 <p>现在我们可以下载<code>2.23-0ubuntu11.3_amd64</code></p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">./download 2.23-0ubuntu11.3_amd64<br></code></pre></td></tr></table></figure>
-<p>执行后即可下载<br>保存在<code>~/glibc-all-in-one/libs</code>下<br><img src="/2024/10/29/hello-world/ile-20250304172528104.png" srcset="/img/loading.gif" lazyload><br>进入该libc中<br><img src="/2024/10/29/hello-world/ile-20250304172733380.png" srcset="/img/loading.gif" lazyload><br>可以发现有一个<code>.debug</code>目录，这个目录中保存了该libc的符号表信息<br>进入<code>.debug/lib/x86_64-linux-gnu</code>，可以找到<code>libc-2.23.so</code>文件<br><img src="/2024/10/29/hello-world/ile-20250304173311500.png" srcset="/img/loading.gif" lazyload><br>将这个文件，放到<code>.debug/</code>目录下。<br>也可以把这些文件全部拖到<code>.debug/</code>下</p>
+<p>执行后即可下载<br>下载完它会保存在<code>~/glibc-all-in-one/libs</code>下<br><img src="/2024/10/29/hello-world/ile-20250304172528104.png" srcset="/img/loading.gif" lazyload><br>进入该libc中<br><img src="/2024/10/29/hello-world/ile-20250304172733380.png" srcset="/img/loading.gif" lazyload><br>可以发现有一个<code>.debug</code>目录，这个目录中保存了该libc的符号表信息<br>进入<code>.debug/lib/x86_64-linux-gnu</code>，可以找到<code>libc-2.23.so</code>文件<br><img src="/2024/10/29/hello-world/ile-20250304173311500.png" srcset="/img/loading.gif" lazyload><br>将这个文件，放到<code>.debug/</code>目录下。<br>也可以把这些文件全部拖到<code>.debug/</code>下</p>
 <p>这样，就可以在不动用gdb的命令的情况下，patchelf更改好文件libc后，<br>gdb打开后就能直接加载好符号表</p>
-<p>但是，ubuntu版本在2.31和2.34后的符号信息表位置发生了些许变化<br>我们需要省流操作：<br>在<code>.debug/</code>目录下执行</p>
+<p>但是，ubuntu版本在2.31和2.34后的符号信息表位置发生了些许变化</p>
+<p>我们只需要省流操作：<br>在<code>.debug/</code>目录下执行</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">cp</span> .build-id/*/* ./<br></code></pre></td></tr></table></figure>
-<p>将<code>./build-id/</code>目录以及其子目录下的<strong>文件</strong>，都复制到<code>.debug</code>文件下</p>
+<p>将<code>./build-id/</code>目录以及其子目录下的<strong>文件</strong>，都复制到<code>.debug/</code>目录下</p>
 <hr>
 <h1 id="使用patchelf"><a href="#使用patchelf" class="headerlink" title="使用patchelf"></a>使用patchelf</h1><blockquote>
 <p>接下来， 是使用patchelf更改libc的操作</p>
@@ -320,6 +324,8 @@
 <p>查看目标程序的进程</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">killall -9 your_binary<br></code></pre></td></tr></table></figure>
 <p>强制终止所有相关进程</p>
+<hr>
+<p>当<br><img src="/2024/10/29/hello-world/ile-20250328105141440.png" srcset="/img/loading.gif" lazyload><br>可以使用<br><img src="/2024/10/29/hello-world/ile-20250328105201892.png" srcset="/img/loading.gif" lazyload><br>然后再patchelf即可<br><img src="/2024/10/29/hello-world/ile-20250328105248641.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>

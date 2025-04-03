@@ -27,7 +27,7 @@
 <meta property="og:description" content="hexo 什么样的题是ret2libc，这类题该怎么做？程序的特征是：能进行栈溢出，没有system函数，也没有&quot;&#x2F;bin&#x2F;sh&quot;参数无法进行常规的ret2textret2libc的关键是获取libc的版本，所以需要获得libc.so中函数的偏移量，所以需要一个输出函数，.got.plt中需要有libc中的函数，我们才能获取到libc中函数的真实地址 从而利用LibcSearc">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-11-03T16:17:30.000Z">
-<meta property="article:modified_time" content="2024-11-25T16:24:22.571Z">
+<meta property="article:modified_time" content="2025-04-02T03:45:47.456Z">
 <meta property="article:author" content="yvyvSunlight">
 <meta property="article:tag" content="ret2xx">
 <meta property="article:tag" content="stack">
@@ -224,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          495 字
+          572 字
         
       </span>
     
@@ -313,6 +313,13 @@
 
 <p>新增接口</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">len</span>(obj)  <span class="hljs-comment"># 返回在当前约束条件下，可能的Libc数量</span><br><span class="hljs-built_in">print</span>(obj)  <span class="hljs-comment"># 若Libc已被唯一确定，打印其详细信息</span><br><br><span class="hljs-keyword">for</span> libc <span class="hljs-keyword">in</span> obj:<br>	<span class="hljs-built_in">print</span>(libc)  <span class="hljs-comment"># 实现了迭代器，打印（或其他操作）当前所有可能的Libc</span><br><br>obj.select_libc()  <span class="hljs-comment"># 打印可能的Libc列表，手动选择一个认为正确的Libc</span><br>obj.select_libc(<span class="hljs-number">2</span>)  <span class="hljs-comment"># 手动选择2号Libc作为正确的Libc</span><br></code></pre></td></tr></table></figure>
+
+
+<p>如果未知libc版本，在本地泄漏libc版本和在远程泄漏libc版本是不同的!<br>因为在本地程序运行时加载的是本地的libc版本！<br>LibcSearcher找到的也是本地的libc版本！</p>
+<p>找不到正确的libc可以<code>add_condition</code>添加限制条件</p>
+<blockquote>
+<p>经典例题：ctfshow pwn107</p>
+</blockquote>
 
                 
               </div>
@@ -415,8 +422,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/11/04/python%E8%AF%AD%E6%B3%95%E4%B9%8B%E5%AD%97%E5%85%B8/" title="python语法之字典">
-                        <span class="hidden-mobile">python语法之字典</span>
+                      <a href="/2024/11/04/python%E4%B8%8Epwntools%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" title="python与pwntools基本使用">
+                        <span class="hidden-mobile">python与pwntools基本使用</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
