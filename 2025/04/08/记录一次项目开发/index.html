@@ -1,0 +1,782 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/favicon.ico">
+  <link rel="icon" href="/images/favicon.ico">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="yvyvSunlight">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="后端：python + flask后端环境：python3.8 windows 前端uniapp + vue3 + pinia + js 前端的一些模块上传文件api： uni.uploadFile() uni.uploadFile(OBJECT) | uni-app官网  demo（摘自uniapp官方文档）： 1234567891011121314151617uni.chooseImage(&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记录一次项目开发">
+<meta property="og:url" content="http://example.com/2025/04/08/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/index.html">
+<meta property="og:site_name" content="yvyvSunlight">
+<meta property="og:description" content="后端：python + flask后端环境：python3.8 windows 前端uniapp + vue3 + pinia + js 前端的一些模块上传文件api： uni.uploadFile() uni.uploadFile(OBJECT) | uni-app官网  demo（摘自uniapp官方文档）： 1234567891011121314151617uni.chooseImage(&amp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2024/10/29/hello-world/e-20250409225448674.png">
+<meta property="og:image" content="http://example.com/2024/10/29/hello-world/e-20250409225744479.png">
+<meta property="og:image" content="http://example.com/2024/10/29/hello-world/e-20250520000251506.png">
+<meta property="article:published_time" content="2025-04-08T03:24:47.000Z">
+<meta property="article:modified_time" content="2025-05-19T16:03:08.586Z">
+<meta property="article:author" content="yvyvSunlight">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2024/10/29/hello-world/e-20250409225448674.png">
+  
+  
+  
+  <title>记录一次项目开发 - yvyvSunlight</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>yvyvSunlight</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="记录一次项目开发"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-04-08 11:24" pubdate>
+          2025年4月8日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          11 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">记录一次项目开发</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>后端：<br>python + flask<br>后端环境：<br>python3.8 windows</p>
+<p>前端<br>uniapp + vue3 + pinia + js</p>
+<h1 id="前端的一些模块"><a href="#前端的一些模块" class="headerlink" title="前端的一些模块"></a>前端的一些模块</h1><h2 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h2><h3 id="api：-uni-uploadFile"><a href="#api：-uni-uploadFile" class="headerlink" title="api： uni.uploadFile()"></a>api： <code>uni.uploadFile()</code></h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/api/request/network-file.html#uploadfile">uni.uploadFile(OBJECT) | uni-app官网</a></p>
+</blockquote>
+<p>demo（摘自uniapp官方文档）：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js">uni.<span class="hljs-title function_">chooseImage</span>(&#123;<br>	<span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">chooseImageRes</span>) =&gt;</span> &#123;<br>		<span class="hljs-keyword">const</span> tempFilePaths = chooseImageRes.<span class="hljs-property">tempFilePaths</span>;<br>		uni.<span class="hljs-title function_">uploadFile</span>(&#123;<br>			<span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://www.example.com/upload&#x27;</span>, <span class="hljs-comment">//仅为示例，非真实的接口地址</span><br>			<span class="hljs-attr">filePath</span>: tempFilePaths[<span class="hljs-number">0</span>],<br>			<span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;file&#x27;</span>,<br>			<span class="hljs-attr">formData</span>: &#123;<br>				<span class="hljs-string">&#x27;user&#x27;</span>: <span class="hljs-string">&#x27;test&#x27;</span><br>			&#125;,<br>			<span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">uploadFileRes</span>) =&gt;</span> &#123;<br>				<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(uploadFileRes.<span class="hljs-property">data</span>);<br>			&#125;<br>		&#125;);<br>	&#125;<br>&#125;);<br><br></code></pre></td></tr></table></figure>
+
+<p>上传视频、音频的方法与之类似，将<code>uni.chooseImage</code>改成<code>uni.chooseVideo</code> 、 <del><code>uni.chooseAudio</code></del>即可，uniapp并没有提供选择音频文件的api，要想选择音频文件上传需要使用<code>uni.chooseFile</code>api</p>
+<hr>
+<h3 id="uniapp选择文件api-uni-chooseFile"><a href="#uniapp选择文件api-uni-chooseFile" class="headerlink" title="uniapp选择文件api  uni.chooseFile()"></a>uniapp选择文件api  uni.chooseFile()</h3><p><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/api/media/file.html">uni-app官网</a></p>
+<p>本api主要用于选择非媒体文件，若要选择媒体文件（图片视频），uniapp提供了专用的api：</p>
+<ul>
+<li>图片选择 <code>uni.chooseImage</code></li>
+<li>视频选择 <code>uni.chooseVideo</code></li>
+<li>多媒体文件选择（图片+视频）<code>uni.chooseVideo</code></li>
+</ul>
+<blockquote>
+<p>经过实践后，发现<code>uni.chooseFile()</code>只支持H5端，不支持app端</p>
+</blockquote>
+<hr>
+<h2 id="自定义基座"><a href="#自定义基座" class="headerlink" title="自定义基座"></a>自定义基座</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://doc.dcloud.net.cn/uni-app-x/api/file-system-spec.html#%E6%B2%99%E7%9B%92%E5%A4%96%E7%9B%AE%E5%BD%95">文件系统 沙盒机制 | uni-app-x</a><br><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/tutorial/run/run-app.html#customplayground">uni-app官网 真机运行 自定义基座</a></p>
+</blockquote>
+<p>由于ios系统以及现代移动端手机系统的沙盒机制，（以ios为例）开发的app不可以直接访问“文件”应用中的文件</p>
+<p>uniapp提供了接口<code>uni.chooseImage()</code>、<code>uni.chooseMedia()</code>和<code>uni.chooseVideo</code>可以访问相册中的图片、视频</p>
+<p>除了这么些接口，由于沙盒机制，在其它应用中的文件如<code>audio</code> 、<code>pdf</code>等文件则不可访问</p>
+<p><strong>不得已</strong>，使用 在插件市场下载原生插件 + 自定义基座 的方式</p>
+<p>（ps：找到的写的好的原生插件正式使用要￥799 ， 在开发测试环境下可以免费试用）</p>
+<h3 id="制作自定义基座的流程"><a href="#制作自定义基座的流程" class="headerlink" title="制作自定义基座的流程"></a>制作自定义基座的流程</h3><ol>
+<li><p>如图所示<br><img src="/2024/10/29/hello-world/e-20250409225448674.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>选择打自定义调试基座，点击打包即可<br><img src="/2024/10/29/hello-world/e-20250409225744479.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ol>
+<p>然而苹果这个证书我搞不来 （需注册开发者账号 一年 99$)</p>
+<p>又不得已，搞下安卓的设备</p>
+<hr>
+<h2 id="安卓设备"><a href="#安卓设备" class="headerlink" title="安卓设备"></a>安卓设备</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xiaoxiangzi520/article/details/136374377">uniapp 安装安卓、IOS模拟器并调试_uniapp ios模拟器-CSDN博客</a></p>
+</blockquote>
+<h3 id="安卓真机调试"><a href="#安卓真机调试" class="headerlink" title="安卓真机调试"></a>安卓真机调试</h3><p>要想正常使用插件（云打包），最重要的一步是打自定义基座<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40597676/article/details/112173216">uniapp—配置自定义基座_uniapp 自定义基座-CSDN博客</a></p>
+<p>安卓平台隐私与政策提示框<br><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/tutorial/app-privacy-android.html">uni-app官网 andoird平台隐私与政策提示框</a></p>
+<hr>
+<p>4.16<br>发现了一个看起来很不错的<strong>免费</strong>插件</p>
+<hr>
+<h2 id="实现动态波浪线效果"><a href="#实现动态波浪线效果" class="headerlink" title="实现动态波浪线效果"></a>实现动态波浪线效果</h2><p>我采用CSS渐变来实现<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/lambert00001/article/details/131724376">巧妙使用 CSS 渐变来实现波浪动画-CSDN博客</a></p>
+<hr>
+<h2 id="状态管理-pinia"><a href="#状态管理-pinia" class="headerlink" title="状态管理 pinia"></a>状态管理 pinia</h2><p><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/tutorial/vue3-pinia.html">状态管理 Pinia | uni-app官网</a><br>使用hbuilder创建的uniapp项目已经内置了pinia，无需安装</p>
+<ol>
+<li><p>在<code>main.js</code>中使用</p>
+</li>
+<li><p>根目录下建立个文件夹，<code>store/</code>，再建立相关文件，如<code>store/audio.js</code>用于管理相关状态</p>
+</li>
+<li><p>在页面&#x2F;组件中使用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><br></code></pre></td></tr></table></figure></li>
+</ol>
+<hr>
+<h1 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h1><h2 id="scroll-into-view属性使用"><a href="#scroll-into-view属性使用" class="headerlink" title="scroll-into-view属性使用"></a>scroll-into-view属性使用</h2><hr>
+<h3 id="一、开发测试阶段安装流程（真机调试）"><a href="#一、开发测试阶段安装流程（真机调试）" class="headerlink" title="一、开发测试阶段安装流程（真机调试）"></a>一、开发测试阶段安装流程（真机调试）</h3><p>适用于开发者在本地测试应用。</p>
+<h4 id="Android-平台"><a href="#Android-平台" class="headerlink" title="Android 平台"></a><strong>Android 平台</strong></h4><ol>
+<li><p><strong>生成测试包</strong></p>
+<ul>
+<li><p>在 HBuilder X 中，选择项目 → 点击菜单栏的 <strong>发行</strong> → <strong>原生 App-云打包</strong>。</p>
+</li>
+<li><p>勾选 Android 平台，选择「使用测试证书」（默认），点击打包。</p>
+</li>
+<li><p>等待云打包完成，下载生成的 <code>.apk</code> 文件。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>安装到手机</strong></p>
+<ul>
+<li><p><strong>方式 1：扫码安装</strong><br>  HBuilder X 打包完成后会生成二维码，用手机浏览器扫码下载安装。</p>
+</li>
+<li><p><strong>方式 2：USB 传输</strong><br>  将 <code>.apk</code> 文件通过数据线或蓝牙传输到手机，打开文件管理器点击安装。</p>
+</li>
+<li><p><strong>注意</strong>：首次安装需开启 <strong>允许安装未知来源应用</strong>（在手机设置中开启）。</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4 id="iOS-平台"><a href="#iOS-平台" class="headerlink" title="iOS 平台"></a><strong>iOS 平台</strong></h4><ol>
+<li><p><strong>生成测试包</strong></p>
+<ul>
+<li><p>需拥有 <strong>Apple 开发者账号</strong>（个人&#x2F;公司）。</p>
+</li>
+<li><p>在 HBuilder X 中选择 <strong>发行</strong> → <strong>原生 App-云打包</strong>，勾选 iOS 平台。</p>
+</li>
+<li><p>配置证书（需提前在 Apple 开发者后台生成 <code>.p12</code> 证书和 <code>.mobileprovision</code> 描述文件）。</p>
+</li>
+<li><p>打包生成 <code>.ipa</code> 文件。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>安装到 iPhone</strong></p>
+<ul>
+<li><p><strong>方式 1：TestFlight</strong><br>  将 <code>.ipa</code> 上传至 App Store Connect，通过 TestFlight 邀请测试用户安装。</p>
+</li>
+<li><p><strong>方式 2：企业证书分发</strong><br>  使用企业证书签名后，用户通过 Safari 下载安装（需信任企业证书）。</p>
+</li>
+<li><p><strong>方式 3：Ad Hoc 测试</strong><br>  添加测试设备的 UDID 到描述文件，通过工具（如爱思助手）安装。</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="二、正式发布阶段安装流程"><a href="#二、正式发布阶段安装流程" class="headerlink" title="二、正式发布阶段安装流程"></a>二、正式发布阶段安装流程</h3><p>适用于用户从应用商店下载安装。</p>
+<h4 id="Android-平台-1"><a href="#Android-平台-1" class="headerlink" title="Android 平台"></a><strong>Android 平台</strong></h4><ol>
+<li><p><strong>生成正式包</strong></p>
+<ul>
+<li><p>在 HBuilder X 中选择 <strong>发行</strong> → <strong>原生 App-云打包</strong>，勾选 Android。</p>
+</li>
+<li><p>使用 <strong>正式签名证书</strong>（避免使用测试证书，否则无法上架）。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>提交应用商店</strong></p>
+<ul>
+<li>上传 <code>.apk</code> 到 Google Play、华为应用市场等平台，审核通过后用户即可下载。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4 id="iOS-平台-1"><a href="#iOS-平台-1" class="headerlink" title="iOS 平台"></a><strong>iOS 平台</strong></h4><ol>
+<li><p><strong>生成正式包</strong></p>
+<ul>
+<li>使用 App Store 类型的证书和描述文件打包生成 <code>.ipa</code>。</li>
+</ul>
+</li>
+<li><p><strong>提交 App Store</strong></p>
+<ul>
+<li>通过 App Store Connect 提交应用，审核通过后用户可从 App Store 下载。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p>HbuilderX 未识别到手机 android<br><img src="/2024/10/29/hello-world/e-20250520000251506.png" srcset="/img/loading.gif" lazyload><br><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/tutorial/run/run-app-faq.html">真机运行常见问题@run | uni-app官网</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E5%90%8E%E7%AB%AF/" class="category-chain-item">前后端</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>记录一次项目开发</div>
+      <div>http://example.com/2025/04/08/记录一次项目开发/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>yvyvSunlight</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年4月8日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/04/12/Vue%E5%B1%9E%E6%80%A7/" title="Vue属性">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Vue属性</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/04/06/pwn%E4%B8%AD%E7%9A%84send%E4%B8%8Esendline/" title="pwn中的send与sendline">
+                        <span class="hidden-mobile">pwn中的send与sendline</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

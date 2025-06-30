@@ -229,215 +229,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/03/26/UAF/" target="_self">
-          UAF
+        <a href="/2025/04/15/OS%E5%AD%A6%E4%B9%A0-%E4%BA%92%E6%96%A5/" target="_self">
+          OS学习-互斥
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/26/UAF/" target="_self">
-        <div>
-          use after free free()函数所做的是把指针指向的chunk释放了，使这个chunk不再是堆块了但是这个指针仍然指向这个chunk,这个指针的值以及这个chunk的内容都不会被改变 如果你重新申请了这块被释放的chunk，那么只要这个指针的值没有变，这个chunk就还能被这个指针使用 如果原来的指针-&gt;原来的chunk是有固定功能的，如果你申请内存时又成功分配到了这个chun
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-26 22:27" pubdate>
-              2025-03-26
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/pwn/" class="category-chain-item">pwn</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%A0%86%E5%88%A9%E7%94%A8/">#堆利用</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/03/19/%E5%85%B3%E4%BA%8Epwn%E9%A2%98%E7%9A%84%E7%8E%AF%E5%A2%83/" target="_self">
-          关于pwn题的环境
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/19/%E5%85%B3%E4%BA%8Epwn%E9%A2%98%E7%9A%84%E7%8E%AF%E5%A2%83/" target="_self">
-        <div>
-          关于pwn题的环境目前我所已知的三种较为推荐的方式：将本地环境和远程环境相统一  patchelf + glibc-all-in-one更改pwn题libc  在脚本中打开本地进程这么写 1process([&quot;ld路径“, &quot;./题目&quot;], env=&#123;&quot;LD_PRELOAD&quot;:&quot;libc路径&quot;&#125;)  dock
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-19 22:36" pubdate>
-              2025-03-19
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/03/19/%E5%A0%86%E5%9F%BA%E7%A1%80/" target="_self">
-          堆基础
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/19/%E5%A0%86%E5%9F%BA%E7%A1%80/" target="_self">
-        <div>
-          brk  系统调用  将进程的堆结束地址(prgram break)设置为指定的值，从而控制堆内存的大小。可以扩展或收缩堆内存 12#include &lt;unistd.h&gt;int brk(void *addr);  addr：指定新的堆结束地址 成功时，返回0失败时，返回-1，设置errno为以下之一：  ENOMEN 内存不足，无法扩展到指定的地址 EINVAL 指定的地址无效
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-19 17:17" pubdate>
-              2025-03-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/pwn/" class="category-chain-item">pwn</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/03/18/%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0%E4%B8%8E%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" target="_self">
-          危险函数与常用函数
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/18/%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0%E4%B8%8E%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" target="_self">
-        <div>
-          危险函数gets(s)gets() 函数从标准输入读取一行字符，直到遇到换行符（\n）或文件结束符（EOF）。换行符不会被存储在目标字符串中，而是被替换为 null 终止符（\0）。puts(const char s)*持续输出s指向的字符 直到遇到终止符\0  1char *strncpy(char *dest, const char *src, size_t n);  dest 目标字符串的指
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-18 14:55" pubdate>
-              2025-03-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/pwn/" class="category-chain-item">pwn</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/03/18/gdb%E8%B7%9F%E8%BF%9B%E7%88%B6%E8%BF%9B%E7%A8%8B%E6%88%96%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E9%97%AE%E9%A2%98/" target="_self">
-          gdb跟进父进程或子进程的问题
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/18/gdb%E8%B7%9F%E8%BF%9B%E7%88%B6%E8%BF%9B%E7%A8%8B%E6%88%96%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E9%97%AE%E9%A2%98/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/15/OS%E5%AD%A6%E4%B9%A0-%E4%BA%92%E6%96%A5/" target="_self">
         <div>
           
         </div>
@@ -447,8 +245,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-18 12:12" pubdate>
-              2025-03-18
+            <time datetime="2025-04-15 16:55" pubdate>
+              2025-04-15
             </time>
           </div>
         
@@ -464,15 +262,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/03/17/ios%E7%AD%BE%E5%90%8D/" target="_self">
-          ios签名
+        <a href="/2025/04/15/OS%E5%AD%A6%E4%B9%A0-%E4%BF%A1%E5%8F%B7%E9%87%8F/" target="_self">
+          OS学习-信号量
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/17/ios%E7%AD%BE%E5%90%8D/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/15/OS%E5%AD%A6%E4%B9%A0-%E4%BF%A1%E5%8F%B7%E9%87%8F/" target="_self">
         <div>
-          ios app 开发门槛真是高 没有mac和xcode就算了 我用vscode + uniapp + hbuilder还不行（windows）结果真机调试运行还得注册开发者账号 + 获取ios签名这就是高贵的苹果✌吗 😭  在windows上开发调试ios app途径：  注册开发者账号 + 签名  官方正经 途径但是 $99&#x2F;年的价格 + 注册流程困难还是算了   使用爱思助手进行自
+          P操作与V操作信号量是被保护的整数变量  初始化完成后，只能通过P和V操作修改 由OS保证，PV操作均属于原子操作  P操作设S为一个信号量，P(S)执行时主要完成下述动作： 123456s = s - 1;If (s &lt; 0) &#123;	设置进程状态为等待	将进程放入信号量等待队列	转调度程序&#125;  V操作123456s = s + 1;If (s &lt;= 0) &#123
         </div>
       </a>
 
@@ -480,38 +278,17 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-17 22:01" pubdate>
-              2025-03-17
+            <time datetime="2025-04-15 13:44" pubdate>
+              2025-04-15
             </time>
           </div>
         
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%89%8D%E5%90%8E%E7%AB%AF/" class="category-chain-item">前后端</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/ios/">#ios</a>
+              <a href="/tags/OS/">#OS</a>
             
           </div>
         
@@ -525,15 +302,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/03/16/conda%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8C%97/" target="_self">
-          conda不完全指北
+        <a href="/2025/04/12/js%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" target="_self">
+          js数据结构
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/16/conda%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8C%97/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/12/js%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" target="_self">
         <div>
-          安装anaconda后，将anaconda适配到powershell 每次启动powershell都会默认激活虚拟环境base查看pip版本发现是anaconda中的pip查看python版本和安装位置发现也是anaconda中的 如何取消默认激活？  查看本机conda默认配置 1conda config --show  我们可以看到auto_activate_base属性默认设置为 True将
+          Set.add().delete().has().clear() .size attr const arrFromSet &#x3D; Array.from(mySet) 20min数组操作、半小时promise（看题解）
         </div>
       </a>
 
@@ -541,33 +318,12 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-16 21:54" pubdate>
-              2025-03-16
+            <time datetime="2025-04-12 03:44" pubdate>
+              2025-04-12
             </time>
           </div>
         
         
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Environment/" class="category-chain-item">Environment</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
         
       </div>
     </article>
@@ -579,15 +335,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/03/16/docker%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8C%97/" target="_self">
-          docker使用指南
+        <a href="/2025/04/12/js%E4%B8%AD%E7%9A%84fs%E3%80%81path%E6%A8%A1%E5%9D%97/" target="_self">
+          js中的fs、path模块
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/16/docker%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8C%97/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/12/js%E4%B8%AD%E7%9A%84fs%E3%80%81path%E6%A8%A1%E5%9D%97/" target="_self">
         <div>
-          使用Docker搭建CTF Pwn做题环境 为了保证利用脚本能够正常打通， 我们通常需要在本地准备相同的运行环境， 并且在远程利用之前先在本地进行测试  如果为每个不同的运行环境都单独准备一个Ubuntu虚拟机，则太不优雅了  Docker 操作系统层面上的虚拟化方案能够非常便捷地搭建不同pwn题所对应的原始环境   [!note] 对比虚拟机硬件层面的虚拟化方案  Docker使用Docker入
+          fs模块常用方法： 读取文件：fs.readFile(file, [options], callback) 异步读（默认是异步的）fs.readFileSync(file,[options]) 同步读（没有回调函数） path模块path.join(...paths) 将多个路径片段连接成一个路径
         </div>
       </a>
 
@@ -595,62 +351,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-16 21:51" pubdate>
-              2025-03-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Environment/" class="category-chain-item">Environment</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/03/15/Nginx/" target="_self">
-          Nginx
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/15/Nginx/" target="_self">
-        <div>
-          怀着复杂悲伤的心情写这篇文章顶着十分困倦的状态  Nginx是高性能的HTTP和反向代理web服务器，处理高并发能力十分强大，支持热部署，启动简单，可以做到不间断运行。
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-15 08:05" pubdate>
-              2025-03-15
+            <time datetime="2025-04-12 02:28" pubdate>
+              2025-04-12
             </time>
           </div>
         
@@ -687,15 +389,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/03/14/%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA%E4%B8%8E%E9%83%A8%E7%BD%B2/" target="_self">
-          静态网站搭建与部署
+        <a href="/2025/04/12/js%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/" target="_self">
+          js数组方法
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/14/%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA%E4%B8%8E%E9%83%A8%E7%BD%B2/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/12/js%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/" target="_self">
         <div>
-          三更半夜了搁这儿学网站部署，不嘻嘻😡  1. 注册域名搭建静态网站之前，首先得有个网站域名  应该有了，此步略  2.创建BucketCI&#x2F;CD在项目中写一个.github/workflows/ci.yml文件  参考：GitHub Actions 进行前端自动化部署如何使用 GitHub Actions 实现前端项目的自动化部署到服务器 - 掘金
+          map方法对数组中的每个元素进行某种操作，并返回一个新数组，包含操作后的结果。map方法不会改变原数组，而是返回一个新数组 1array.map(callback(item, index, array), thisArg);  callback回调函数定义 item：数组元素 index（可选）：数组索引 array（可选）：调用map的数组   thisArg （可选）: this  返回新数组
         </div>
       </a>
 
@@ -703,8 +405,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-14 00:56" pubdate>
-              2025-03-14
+            <time datetime="2025-04-12 01:33" pubdate>
+              2025-04-12
             </time>
           </div>
         
@@ -720,6 +422,255 @@
       <span class="category-chain">
         
   <a href="/categories/%E5%89%8D%E5%90%8E%E7%AB%AF/" class="category-chain-item">前后端</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/04/12/js%E5%BC%82%E6%AD%A5/" target="_self">
+          js异步
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/12/js%E5%BC%82%E6%AD%A5/" target="_self">
+        <div>
+          Promiseasync 和 await 15届蓝桥杯web应用开发赛道3. 产品360度展示  todo 123456789const pipeline = async(initialValue, sequence)&#123;	let argument = initialValue;	for (let i = 0; i &lt; sequence.length; i++)	&#123;		ar
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-04-12 01:10" pubdate>
+              2025-04-12
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/04/12/dom%E5%85%83%E7%B4%A0/" target="_self">
+          dom元素
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/12/dom%E5%85%83%E7%B4%A0/" target="_self">
+        <div>
+          dom元素的属性classList该对象的方法classList.addclassList.remove
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-04-12 01:06" pubdate>
+              2025-04-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E5%90%8E%E7%AB%AF/" class="category-chain-item">前后端</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/04/12/Vue%E5%B1%9E%E6%80%A7/" target="_self">
+          Vue属性
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/12/Vue%E5%B1%9E%E6%80%A7/" target="_self">
+        <div>
+          计算属性计算属性适用于以下场景：  动态计算数据：根据现有数据动态生成新数据 格式化数据：对数据进行格式化处理 依赖多个数据源：当多个数据源变化时，计算属性会自动更新
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-04-12 00:49" pubdate>
+              2025-04-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E5%90%8E%E7%AB%AF/" class="category-chain-item">前后端</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/04/08/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" target="_self">
+          记录一次项目开发
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/08/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" target="_self">
+        <div>
+          后端：python + flask后端环境：python3.8 windows 前端uniapp + vue3 + pinia + js 前端的一些模块上传文件api： uni.uploadFile() uni.uploadFile(OBJECT) | uni-app官网  demo（摘自uniapp官方文档）： 1234567891011121314151617uni.chooseImage(&
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-04-08 11:24" pubdate>
+              2025-04-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E5%90%8E%E7%AB%AF/" class="category-chain-item">前后端</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/04/06/pwn%E4%B8%AD%E7%9A%84send%E4%B8%8Esendline/" target="_self">
+          pwn中的send与sendline
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/06/pwn%E4%B8%AD%E7%9A%84send%E4%B8%8Esendline/" target="_self">
+        <div>
+          read()函数与scanf()函数 当read(0, buf, 50)接收50个字节时，如果已经构造了50个字节的payload，则要使用send，不要使用sendline 若使用sendline()，多余的\n换行符会影响下一次io
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-04-06 23:53" pubdate>
+              2025-04-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/pwn/" class="category-chain-item">pwn</a>
   
   
 
@@ -739,7 +690,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#board">6</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/#board">8</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

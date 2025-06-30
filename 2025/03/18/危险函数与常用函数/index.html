@@ -27,7 +27,7 @@
 <meta property="og:description" content="危险函数gets(s)gets() 函数从标准输入读取一行字符，直到遇到换行符（\n）或文件结束符（EOF）。换行符不会被存储在目标字符串中，而是被替换为 null 终止符（\0）。puts(const char s)*持续输出s指向的字符 直到遇到终止符\0  1char *strncpy(char *dest, const char *src, size_t n);  dest 目标字符串的指">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-03-18T06:55:08.000Z">
-<meta property="article:modified_time" content="2025-04-02T04:13:25.883Z">
+<meta property="article:modified_time" content="2025-04-05T08:25:44.287Z">
 <meta property="article:author" content="yvyvSunlight">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          466 字
+          922 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          4 分钟
+          8 分钟
         
       </span>
     
@@ -294,6 +294,46 @@
 <figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs erlang">闹钟设置为 <span class="hljs-number">5</span> 秒后触发<br>程序运行中...<br>程序运行中...<br>程序运行中...<br>程序运行中...<br>程序运行中...<br>收到信号 <span class="hljs-number">14</span>：闹钟触发<br>程序运行中...<br>...<br><br></code></pre></td></tr></table></figure>
 
 <h2 id="注意事项：-一个进程同时只能有一个闹钟定时器。如果在之前的闹钟尚未触发时再次调用-alarm，新的定时将覆盖之前的设置。​菜鸟教程-6nocbtm’s-Blog-6博客园-6-要取消已设置的闹钟，可以调用-alarm-0-。​nocbtm’s-Blog-2旧时光文档-2博客园-2-SIGALRM-信号的默认行为是终止进程，因此通常需要自定义信号处理函数来定义触发后的操作。"><a href="#注意事项：-一个进程同时只能有一个闹钟定时器。如果在之前的闹钟尚未触发时再次调用-alarm，新的定时将覆盖之前的设置。​菜鸟教程-6nocbtm’s-Blog-6博客园-6-要取消已设置的闹钟，可以调用-alarm-0-。​nocbtm’s-Blog-2旧时光文档-2博客园-2-SIGALRM-信号的默认行为是终止进程，因此通常需要自定义信号处理函数来定义触发后的操作。" class="headerlink" title="注意事项：- 一个进程同时只能有一个闹钟定时器。如果在之前的闹钟尚未触发时再次调用 alarm，新的定时将覆盖之前的设置。​菜鸟教程+6nocbtm’s Blog+6博客园+6- 要取消已设置的闹钟，可以调用 alarm(0)。​nocbtm’s Blog+2旧时光文档+2博客园+2- SIGALRM 信号的默认行为是终止进程，因此通常需要自定义信号处理函数来定义触发后的操作。"></a><strong>注意事项：</strong><br>- 一个进程同时只能有一个闹钟定时器。如果在之前的闹钟尚未触发时再次调用 <code>alarm</code>，新的定时将覆盖之前的设置。​<a target="_blank" rel="noopener" href="https://nocbtm.github.io/2019/09/11/linux-c-alarm%E5%87%BD%E6%95%B0/?utm_source=chatgpt.com">菜鸟教程+6nocbtm’s Blog+6博客园+6</a><br>- 要取消已设置的闹钟，可以调用 <code>alarm(0)</code>。​<a target="_blank" rel="noopener" href="https://docs.oldtimes.me/c.biancheng.net/cpp/html/334.html?utm_source=chatgpt.com">nocbtm’s Blog+2旧时光文档+2博客园+2</a><br>- <code>SIGALRM</code> 信号的默认行为是终止进程，因此通常需要自定义信号处理函数来定义触发后的操作。</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;dlfcn.h&gt;</span></span><br><br><span class="hljs-type">void</span> *<span class="hljs-title function_">dlopen</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *filename, <span class="hljs-type">int</span> flag)</span>;<br></code></pre></td></tr></table></figure>
+
+
+<hr>
+<h1 id="字符串操作类"><a href="#字符串操作类" class="headerlink" title="字符串操作类"></a>字符串操作类</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">char</span> *<span class="hljs-title function_">strstr</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *haystack, <span class="hljs-type">const</span> <span class="hljs-type">char</span> *needle)</span>;<br></code></pre></td></tr></table></figure>
+<p>返回指向主字符串中第一次出现子字符串的位置的指针</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">char</span> *<span class="hljs-title function_">strchr</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *haystack, <span class="hljs-type">int</span> c)</span>;<br></code></pre></td></tr></table></figure>
+<p>返回指向主字符串中第一次出现<strong>某个字符</strong>的位置的指针</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">snprintf</span><span class="hljs-params">(<span class="hljs-type">char</span> *str, <span class="hljs-type">size_t</span> size, <span class="hljs-type">const</span> <span class="hljs-type">char</span> *format, ...)</span>;<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>str</code>：目标缓冲区，格式化后的字符串将存储在这里。</li>
+<li><code>size</code>：目标缓冲区的最大长度（包括字符串结束符 <code>\0</code>）。</li>
+<li><code>format</code>：格式化字符串，用于指定输出的格式。</li>
+<li><code>...</code>：可选参数，根据 <code>format</code> 的内容提供相应的值。<br><code>snprintf()</code> 是 C 标准库中的一个安全的字符串格式化函数，用于将格式化的数据写入缓冲区，同时限制输出的长度以防止缓冲区溢出。它的功能类似于 <code>printf()</code>，但更加安全，因为它要求指定缓冲区的最大长度。<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">size_t</span> <span class="hljs-title function_">strlen</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *str)</span>;<br></code></pre></td></tr></table></figure>
+<code>strlen()</code> 是 C 标准库中的一个函数，用于计算字符串的长度。它返回字符串中字符的个数，<strong>不包括字符串结束符 <code>\0</code></strong></li>
+</ul>
+<hr>
+<h1 id="文件类"><a href="#文件类" class="headerlink" title="文件类"></a>文件类</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">FILE *<span class="hljs-title function_">fopen</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *filename, <span class="hljs-type">const</span> <span class="hljs-type">char</span> *mode)</span>;<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>filename</code>：要打开的文件名（路径）。</li>
+<li><code>mode</code>：文件打开模式，常见的模式有：<ul>
+<li><code>&quot;r&quot;</code>：只读模式，文件必须存在。</li>
+<li><code>&quot;w&quot;</code>：写入模式，如果文件存在则清空，如果不存在则创建。</li>
+<li><code>&quot;a&quot;</code>：追加模式，写入内容会添加到文件末尾。</li>
+<li><code>&quot;rb&quot;</code>、<code>&quot;wb&quot;</code>、<code>&quot;ab&quot;</code>：二进制模式（用于读取或写入二进制文件）。</li>
+<li><code>&quot;r+&quot;</code>、<code>&quot;w+&quot;</code>、<code>&quot;a+&quot;</code>：读写模式。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">fclose</span><span class="hljs-params">(FILE *stream)</span>;<br></code></pre></td></tr></table></figure>
+<p><code>stream</code>：文件指针</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">size_t</span> <span class="hljs-title function_">fread</span><span class="hljs-params">(<span class="hljs-type">void</span> *ptr, <span class="hljs-type">size_t</span> size, <span class="hljs-type">size_t</span> count, FILE *stream)</span>;<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>ptr</code>：指向存储读取数据的缓冲区的指针。</li>
+<li><code>size</code>：每个元素的大小（以字节为单位）。</li>
+<li><code>count</code>：要读取的元素数量。</li>
+<li><code>stream</code>：文件指针。</li>
+</ul>
+<hr>
+<p>read</p>
+
                 
               </div>
             

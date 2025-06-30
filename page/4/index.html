@@ -229,15 +229,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/03/04/C%E5%87%BD%E6%95%B0%E6%A0%88%E5%B8%A7/" target="_self">
-          C函数栈帧
+        <a href="/2025/03/27/ida%E5%88%9B%E5%BB%BA%E7%BB%93%E6%9E%84%E4%BD%93/" target="_self">
+          ida创建结构体
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/04/C%E5%87%BD%E6%95%B0%E6%A0%88%E5%B8%A7/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/27/ida%E5%88%9B%E5%BB%BA%E7%BB%93%E6%9E%84%E4%BD%93/" target="_self">
         <div>
-          x86_64 &amp; x86函数基本结构 123456push rbpmov  rbp, rsp...mov  rsp, rbppop  rbpret 进入新函数的栈帧前，要要将调用函数指令的下一条指令地址压入栈里（调用者的栈帧）。 64位函数栈帧再调用新函数前rsp是00调用新函数后先把下一条指令的地址：jmp main+175 压入栈此时rsp是08因此在新函数栈帧中第一个push前rsp
+          ida快照ctrl + shift + w : 唤起创建ida快照窗口ctrl + shift + t : 唤起ida历史快照窗口  0x01 在结构体(structures)窗口中定义（shift + F9）View -&gt; Open Subview -&gt; Structures(shift+ F9) 进入结构体窗口按insert新建结构体（delete键删除）在结构体的ends行，按d
         </div>
       </a>
 
@@ -245,8 +245,156 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-04 10:18" pubdate>
-              2025-03-04
+            <time datetime="2025-03-27 20:12" pubdate>
+              2025-03-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%80%86%E5%90%91/" class="category-chain-item">逆向</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/03/26/UAF/" target="_self">
+          UAF
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/26/UAF/" target="_self">
+        <div>
+          use after free free()函数所做的是把指针指向的chunk释放了，使这个chunk不再是堆块了但是这个指针仍然指向这个chunk,这个指针的值以及这个chunk的内容都不会被改变 如果你重新申请了这块被释放的chunk，那么只要这个指针的值没有变，这个chunk就还能被这个指针使用 如果原来的指针-&gt;原来的chunk是有固定功能的，如果你申请内存时又成功分配到了这个chun
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-03-26 22:27" pubdate>
+              2025-03-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/pwn/" class="category-chain-item">pwn</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%A0%86%E5%88%A9%E7%94%A8/">#堆利用</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/03/19/%E5%85%B3%E4%BA%8Epwn%E9%A2%98%E7%9A%84%E7%8E%AF%E5%A2%83/" target="_self">
+          关于pwn题的环境
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/19/%E5%85%B3%E4%BA%8Epwn%E9%A2%98%E7%9A%84%E7%8E%AF%E5%A2%83/" target="_self">
+        <div>
+          关于pwn题的环境目前我所已知的三种较为推荐的方式：将本地环境和远程环境相统一  patchelf + glibc-all-in-one更改pwn题libc  在脚本中打开本地进程这么写 1process([&quot;ld路径“, &quot;./题目&quot;], env=&#123;&quot;LD_PRELOAD&quot;:&quot;libc路径&quot;&#125;)  dock
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-03-19 22:36" pubdate>
+              2025-03-19
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/03/19/%E5%A0%86%E5%9F%BA%E7%A1%80/" target="_self">
+          堆基础
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/19/%E5%A0%86%E5%9F%BA%E7%A1%80/" target="_self">
+        <div>
+          brk  系统调用  将进程的堆结束地址(prgram break)设置为指定的值，从而控制堆内存的大小。可以扩展或收缩堆内存 12#include &lt;unistd.h&gt;int brk(void *addr);  addr：指定新的堆结束地址 成功时，返回0失败时，返回-1，设置errno为以下之一：  ENOMEN 内存不足，无法扩展到指定的地址 EINVAL 指定的地址无效
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-03-19 17:17" pubdate>
+              2025-03-19
             </time>
           </div>
         
@@ -283,15 +431,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/03/04/pwntools%E4%BD%BF%E7%94%A8/" target="_self">
-          pwntools使用
+        <a href="/2025/03/18/%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0%E4%B8%8E%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" target="_self">
+          危险函数与常用函数
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/04/pwntools%E4%BD%BF%E7%94%A8/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/18/%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0%E4%B8%8E%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" target="_self">
         <div>
-          ELF1exe = ELF(&quot;./attachment&quot;) ELF对象的属性四大用途  sym 查找符号地址 符号表 函数、变量地址 plt 获取plt表地址  &#x3D;&#x3D;plt表和got表相比最重要的特性就是plt表可执行而got表不可执行 plt会跳转到相应函数处的地址&#x3D;&#x3D;   got 获取got表地址 查找字符串的地址 .search[b
+          危险函数gets(s)gets() 函数从标准输入读取一行字符，直到遇到换行符（\n）或文件结束符（EOF）。换行符不会被存储在目标字符串中，而是被替换为 null 终止符（\0）。puts(const char s)*持续输出s指向的字符 直到遇到终止符\0  1char *strncpy(char *dest, const char *src, size_t n);  dest 目标字符串的指
         </div>
       </a>
 
@@ -299,8 +447,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-04 10:01" pubdate>
-              2025-03-04
+            <time datetime="2025-03-18 14:55" pubdate>
+              2025-03-18
             </time>
           </div>
         
@@ -337,154 +485,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/03/03/ret2libc-1/" target="_self">
-          ret2libc
+        <a href="/2025/03/18/gdb%E8%B7%9F%E8%BF%9B%E7%88%B6%E8%BF%9B%E7%A8%8B%E6%88%96%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E9%97%AE%E9%A2%98/" target="_self">
+          gdb跟进父进程或子进程的问题
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/03/ret2libc-1/" target="_self">
-        <div>
-          libc基地址 + 函数偏移量 &#x3D; 函数真实地址  问题是&#x3D;&#x3D;怎么找libc基地址&#x3D;&#x3D;呢？&#x3D;&gt; 泄漏一个函数的真实地址  有时间了解一下 libc的延迟绑定技术 got表-plt表  泄漏一个函数的真实地址&#x3D;&gt; 一般方法是采用&#x3D;&#x3D;got表泄漏&#x3D;&#x3D;以puts函数为例只要之前执行
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-03 22:27" pubdate>
-              2025-03-03
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/pwn/" class="category-chain-item">pwn</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/03/03/%E6%A0%88%E5%AF%B9%E9%BD%90/" target="_self">
-          栈对齐
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/03/%E6%A0%88%E5%AF%B9%E9%BD%90/" target="_self">
-        <div>
-          加ret跳push需要花时间总结下加pop行不行？ROP-基础-ret2libc2_ret2libc2下载-CSDN博客
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-03 21:21" pubdate>
-              2025-03-03
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/03/03/GHCTF-2025-wp/" target="_self">
-          GHCTF-2025_wp
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/03/GHCTF-2025-wp/" target="_self">
-        <div>
-          Hello_world给了后门函数，基本的栈溢出有pie partial write + 栈对齐exp: 123456789101112131415161718192021222324252627282930from pwn import *import oscontext(arch=&#x27;amd64&#x27;, os=&#x27;linux&#x27;, log_level=&#x27;
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-03 20:05" pubdate>
-              2025-03-03
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/WP/" class="category-chain-item">WP</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/03/02/elf%E6%96%87%E4%BB%B6%E6%AE%B5/" target="_self">
-          elf文件段
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/02/elf%E6%96%87%E4%BB%B6%E6%AE%B5/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/18/gdb%E8%B7%9F%E8%BF%9B%E7%88%B6%E8%BF%9B%E7%A8%8B%E6%88%96%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E9%97%AE%E9%A2%98/" target="_self">
         <div>
           
         </div>
@@ -494,8 +501,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-02 19:16" pubdate>
-              2025-03-02
+            <time datetime="2025-03-18 12:12" pubdate>
+              2025-03-18
             </time>
           </div>
         
@@ -511,15 +518,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/03/02/%E4%BD%BF%E7%94%A8pwntools%E6%97%B6%E7%9A%84%E8%AF%AD%E6%B3%95%E6%B3%A8%E6%84%8F%E7%82%B9/" target="_self">
-          使用pwntools时的语法注意点
+        <a href="/2025/03/17/ios%E7%AD%BE%E5%90%8D/" target="_self">
+          ios签名
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/02/%E4%BD%BF%E7%94%A8pwntools%E6%97%B6%E7%9A%84%E8%AF%AD%E6%B3%95%E6%B3%A8%E6%84%8F%E7%82%B9/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/17/ios%E7%AD%BE%E5%90%8D/" target="_self">
         <div>
-          p32不能操作负数需要和负数 与 上 1，转化为无符号数 12var_v2 = -557122643 &amp; 0xFFFFFFFF  # 32位 8个F （4字节）p32(var_v2)
+          ios app 开发门槛真是高 没有mac和xcode就算了 我用vscode + uniapp + hbuilder还不行（windows）结果真机调试运行还得注册开发者账号 + 获取ios签名这就是高贵的苹果✌吗 😭  在windows上开发调试ios app途径：  注册开发者账号 + 签名  官方正经 途径但是 $99&#x2F;年的价格 + 注册流程困难还是算了   使用爱思助手进行自
         </div>
       </a>
 
@@ -527,8 +534,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-02 13:14" pubdate>
-              2025-03-02
+            <time datetime="2025-03-17 22:01" pubdate>
+              2025-03-17
             </time>
           </div>
         
@@ -543,7 +550,68 @@
     
       <span class="category-chain">
         
-  <a href="/categories/pwn/" class="category-chain-item">pwn</a>
+  <a href="/categories/%E5%89%8D%E5%90%8E%E7%AB%AF/" class="category-chain-item">前后端</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/ios/">#ios</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/03/16/conda%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8C%97/" target="_self">
+          conda不完全指北
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/16/conda%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8C%97/" target="_self">
+        <div>
+          安装anaconda后，将anaconda适配到powershell 每次启动powershell都会默认激活虚拟环境base查看pip版本发现是anaconda中的pip查看python版本和安装位置发现也是anaconda中的 说明已经正确安装了conda并且激活了虚拟环境base  那么如何取消默认激活base环境？  查看本机conda默认配置 1conda config --show
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-03-16 21:54" pubdate>
+              2025-03-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Environment/" class="category-chain-item">Environment</a>
   
   
 
@@ -565,15 +633,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/03/01/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98/" target="_self">
-          虚拟环境网络问题
+        <a href="/2025/03/16/docker%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8C%97/" target="_self">
+          docker使用指南
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/01/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/16/docker%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8C%97/" target="_self">
         <div>
-          wsl2联网问题老生常谈了，写个脚本放在./scripts/proxy.sh 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364#!/bin/sh# hostip=$(cat /etc/resolv.conf |
+          使用Docker搭建CTF Pwn做题环境 为了保证利用脚本能够正常打通， 我们通常需要在本地准备相同的运行环境， 并且在远程利用之前先在本地进行测试  如果为每个不同的运行环境都单独准备一个Ubuntu虚拟机，则太不优雅了  Docker 操作系统层面上的虚拟化方案能够非常便捷地搭建不同pwn题所对应的原始环境   [!note] 对比虚拟机硬件层面的虚拟化方案  Docker使用Docker入
         </div>
       </a>
 
@@ -581,8 +649,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-01 16:43" pubdate>
-              2025-03-01
+            <time datetime="2025-03-16 21:51" pubdate>
+              2025-03-16
             </time>
           </div>
         
@@ -597,7 +665,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/pwn/" class="category-chain-item">pwn</a>
+  <a href="/categories/Environment/" class="category-chain-item">Environment</a>
   
   
 
@@ -619,15 +687,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/03/01/OS%E5%AE%9E%E9%AA%8C%E4%B8%80/" target="_self">
-          OS实验一
+        <a href="/2025/03/15/Nginx/" target="_self">
+          Nginx
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/01/OS%E5%AE%9E%E9%AA%8C%E4%B8%80/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/15/Nginx/" target="_self">
         <div>
-          实验内容：    1.     在Linux&#x2F;OpenEuler&#x2F;OpenKylin系统中，增加一个系统调用&#x2F;或内核模块，鼓励程序逻辑的多样化2.     撰写一个应用测试程序调用该系统调用&#x2F;测试该内核模块3.     使用trace&#x2F;ptrace&#x2F;strace，或类似的系统跟踪工具来对该测试程序进行跟踪调试4.     附加：在指
+          怀着复杂悲伤的心情写这篇文章顶着十分困倦的状态  Nginx是高性能的HTTP和反向代理web服务器，处理高并发能力十分强大，支持热部署，启动简单，可以做到不间断运行。
         </div>
       </a>
 
@@ -635,41 +703,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-01 15:10" pubdate>
-              2025-03-01
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/03/01/apoorvctf_wp/" target="_self">
-          apoorvctf_wp
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/01/apoorvctf_wp/" target="_self">
-        <div>
-          kogarashicafe - the first栈溢出 + 基本ROP exp: 123456789101112131415161718192021222324252627from pwn import *import oscontext(arch=&#x27;i386&#x27;, os=&#x27;linux&#x27;, log_level=&#x27;debug&#x27;)if os.
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-01 12:09" pubdate>
-              2025-03-01
+            <time datetime="2025-03-15 08:05" pubdate>
+              2025-03-15
             </time>
           </div>
         
@@ -684,7 +719,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/WP/" class="category-chain-item">WP</a>
+  <a href="/categories/%E5%89%8D%E5%90%8E%E7%AB%AF/" class="category-chain-item">前后端</a>
   
   
 
@@ -704,7 +739,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/3/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><a class="extend next" rel="next" href="/page/5/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/3/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/#board">8</a><a class="extend next" rel="next" href="/page/5/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
