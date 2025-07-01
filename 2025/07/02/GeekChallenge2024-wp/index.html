@@ -19,17 +19,18 @@
   <meta name="author" content="yvyvSunlight">
   <meta name="keywords" content="">
   
-    <meta name="description" content="GeekChallenge2024 write-up (复现)  pwn部分 ez_shellcode查保护no pie, no canary 64位小段 动态链接 逆向： 1234567891011121314151617181920212223242526int __fastcall main(int argc, const char **argv, const char **envp)&amp;#">
+    <meta name="description" content="GeekChallenge2024 write-up (复现)  pwn部分 ez_shellcode查保护no pie, no canary 64位小段 动态链接 逆向主函数： 1234567891011121314151617181920212223242526int __fastcall main(int argc, const char **argv, const char **envp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GeekChallenge2024_wp">
 <meta property="og:url" content="http://example.com/2025/07/02/GeekChallenge2024-wp/index.html">
 <meta property="og:site_name" content="yvyvSunlight">
-<meta property="og:description" content="GeekChallenge2024 write-up (复现)  pwn部分 ez_shellcode查保护no pie, no canary 64位小段 动态链接 逆向： 1234567891011121314151617181920212223242526int __fastcall main(int argc, const char **argv, const char **envp)&amp;#">
+<meta property="og:description" content="GeekChallenge2024 write-up (复现)  pwn部分 ez_shellcode查保护no pie, no canary 64位小段 动态链接 逆向主函数： 1234567891011121314151617181920212223242526int __fastcall main(int argc, const char **argv, const char **envp">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2024/10/29/hello-world/e2024-wp/file-20250702001655102.png">
 <meta property="og:image" content="http://example.com/2024/10/29/hello-world/e2024-wp/file-20250702001803623.png">
+<meta property="og:image" content="http://example.com/2024/10/29/hello-world/e2024-wp/file-20250702012257850.png">
 <meta property="article:published_time" content="2025-07-01T16:11:19.000Z">
-<meta property="article:modified_time" content="2025-07-01T17:19:31.734Z">
+<meta property="article:modified_time" content="2025-07-01T17:34:34.198Z">
 <meta property="article:author" content="yvyvSunlight">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2024/10/29/hello-world/e2024-wp/file-20250702001655102.png">
@@ -225,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          173 字
+          393 字
         
       </span>
     
@@ -236,7 +237,7 @@
         
         
         
-          2 分钟
+          4 分钟
         
       </span>
     
@@ -284,9 +285,30 @@
 <p>pwn部分</p>
 <h1 id="ez-shellcode"><a href="#ez-shellcode" class="headerlink" title="ez_shellcode"></a>ez_shellcode</h1><p>查保护<br><img src="/2024/10/29/hello-world/e2024-wp/file-20250702001655102.png" srcset="/img/loading.gif" lazyload><br>no pie, no canary</p>
 <p><img src="/2024/10/29/hello-world/e2024-wp/file-20250702001803623.png" srcset="/img/loading.gif" lazyload><br>64位小段 动态链接</p>
-<p>逆向：</p>
+<p>逆向主函数：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> __fastcall <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">const</span> <span class="hljs-type">char</span> **argv, <span class="hljs-type">const</span> <span class="hljs-type">char</span> **envp)</span><br>&#123;<br>  <span class="hljs-type">char</span> name[<span class="hljs-number">8</span>]; <span class="hljs-comment">// [rsp+8h] [rbp-18h] BYREF</span><br>  <span class="hljs-type">void</span> *p;      <span class="hljs-comment">// [rsp+10h] [rbp-10h]</span><br>  <span class="hljs-type">size_t</span> len;   <span class="hljs-comment">// [rsp+18h] [rbp-8h] 申请的内存区域长度</span><br><br>  init(argc, argv, envp);                       <span class="hljs-comment">// 初始化缓冲区 3个都是 0 2 0 无缓冲模式</span><br>  len = sysconf(<span class="hljs-number">30</span>);                            <span class="hljs-comment">// 系统物理内存的页数</span><br>  p = mmap(<span class="hljs-number">0LL</span>, len, <span class="hljs-number">3</span>, <span class="hljs-number">34</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0LL</span>);           <span class="hljs-comment">// 申请内存</span><br>  <span class="hljs-keyword">if</span> ( p == (<span class="hljs-type">void</span> *)<span class="hljs-number">-1LL</span> )<br>  &#123;<br>    perror(<span class="hljs-string">&quot;mmap&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>  &#125;<br>  <span class="hljs-keyword">else</span><br>  &#123;<br>    shellcode = p;                              <span class="hljs-comment">// 指针 -&gt; 申请的内存</span><br>    <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;Hello!!!&quot;</span>);<br>    <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;do you know shellcode?&quot;</span>);<br>    <span class="hljs-built_in">memset</span>(shellcode, <span class="hljs-number">144</span>, <span class="hljs-number">0x1F4</span>uLL);           <span class="hljs-comment">// 申请内存区域赋值</span><br>    read(<span class="hljs-number">0</span>, shellcode, <span class="hljs-number">0x190</span>uLL);               <span class="hljs-comment">// 申请内存区域读入</span><br>    <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;please input your name:&quot;</span>);<br>    gets(name);                                 <span class="hljs-comment">// 向栈中读入数据 gets函数 可以栈溢出</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
+
+<p>该代码本质上就是顺序执行了2次读入</p>
+<ol>
+<li>程序在读入前先申请了一块内存，具有可读可写权限，在期间穿插puts输出提示信息</li>
+<li>第一次读入申请的内存 可以写入shellcode</li>
+<li>第二次读入栈         可以栈溢出</li>
+</ol>
+<p>在程序中发现了<code>gift()</code>函数：<br><img src="/2024/10/29/hello-world/e2024-wp/file-20250702012257850.png" srcset="/img/loading.gif" lazyload><br>将申请内存的执行权限改为 <strong>仅可执行</strong><br>该函数没有被引用过</p>
+<p>根据这些程序信息：</p>
+<ul>
+<li>可以在内存区域写入</li>
+<li>可以将这个内存区域变为可执行</li>
+<li>可以栈溢出控制rip</li>
+</ul>
+<p>那么现在pwn掉这个程序的思路：</p>
+<ol>
+<li>在程序逻辑的执行过程中 向申请内存写入待执行的shellcode</li>
+<li>构造rop链，执行<code>gift()</code>函数，修改该申请内存权限为 仅可执行</li>
+<li>执行这段shellcode, pwn掉这个程序。</li>
+</ol>
+<hr>
 
                 
               </div>
