@@ -27,7 +27,7 @@
 <meta property="og:description" content="危险函数gets(s)gets() 函数从标准输入读取一行字符，直到遇到换行符（\n）或文件结束符（EOF）。换行符不会被存储在目标字符串中，而是被替换为 null 终止符（\0）。puts(const char s)*持续输出s指向的字符 直到遇到终止符\0  1char *strncpy(char *dest, const char *src, size_t n);  dest 目标字符串的指">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-03-18T06:55:08.000Z">
-<meta property="article:modified_time" content="2025-04-05T08:25:44.287Z">
+<meta property="article:modified_time" content="2025-06-30T17:20:35.306Z">
 <meta property="article:author" content="yvyvSunlight">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          922 字
+          994 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          8 分钟
+          9 分钟
         
       </span>
     
@@ -333,6 +333,10 @@
 </ul>
 <hr>
 <p>read</p>
+<hr>
+<p>dlopen()</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;dlfcn.h&gt;</span></span><br><br><span class="hljs-comment">/** </span><br><span class="hljs-comment">* @brief 在运行时候加载指定的动态库 返回一个句柄</span><br><span class="hljs-comment">* @param filename 动态库路径  若为null:返回主程序的句柄</span><br><span class="hljs-comment">* @param flag 控制加载行为的标志</span><br><span class="hljs-comment">* @return 成功返回动态库的句柄 失败返回null</span><br><span class="hljs-comment">*/</span><br><span class="hljs-type">void</span> *<span class="hljs-title function_">dlopen</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *filename, <span class="hljs-type">int</span> flag)</span>;<br><br></code></pre></td></tr></table></figure>
+
 
                 
               </div>

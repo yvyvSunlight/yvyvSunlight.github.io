@@ -229,6 +229,182 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2025/03/27/off-by-one/" target="_self">
+          off-by-one
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/27/off-by-one/" target="_self">
+        <div>
+          单字节缓冲区溢出  Maybe in:  使用循环语句向堆块中写入数据时，循环的次数设置错误 字符串操作不合适  off-by-one是可以基于各种缓冲区的，比如堆、栈、bss段等，在堆上比较常见 详见：堆中的 Off-By-One - CTF Wiki  利用手法：  控制溢出字节：修改大小造成块结构之间出现重叠，从而泄漏其它块数据，或是覆盖其它块数据 溢出NULL字节：使得pre_inuse
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-03-27 21:33" pubdate>
+              2025-03-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/pwn/" class="category-chain-item">pwn</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%A0%86%E5%88%A9%E7%94%A8/">#堆利用</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/03/27/ida%E5%88%9B%E5%BB%BA%E7%BB%93%E6%9E%84%E4%BD%93/" target="_self">
+          ida创建结构体
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/27/ida%E5%88%9B%E5%BB%BA%E7%BB%93%E6%9E%84%E4%BD%93/" target="_self">
+        <div>
+          ida快照ctrl + shift + w : 唤起创建ida快照窗口ctrl + shift + t : 唤起ida历史快照窗口  0x01 在结构体(structures)窗口中定义（shift + F9）View -&gt; Open Subview -&gt; Structures(shift+ F9) 进入结构体窗口按insert新建结构体（delete键删除）在结构体的ends行，按d
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-03-27 20:12" pubdate>
+              2025-03-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%80%86%E5%90%91/" class="category-chain-item">逆向</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/03/26/UAF/" target="_self">
+          UAF
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/26/UAF/" target="_self">
+        <div>
+          use after free free()函数所做的是把指针指向的chunk释放了，使这个chunk不再是堆块了但是这个指针仍然指向这个chunk,这个指针的值以及这个chunk的内容都不会被改变 如果你重新申请了这块被释放的chunk，那么只要这个指针的值没有变，这个chunk就还能被这个指针使用 如果原来的指针-&gt;原来的chunk是有固定功能的，如果你申请内存时又成功分配到了这个chun
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-03-26 22:27" pubdate>
+              2025-03-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/pwn/" class="category-chain-item">pwn</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%A0%86%E5%88%A9%E7%94%A8/">#堆利用</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2025/03/19/%E5%85%B3%E4%BA%8Epwn%E9%A2%98%E7%9A%84%E7%8E%AF%E5%A2%83/" target="_self">
           关于pwn题的环境
         </a>
@@ -551,168 +727,6 @@
       <span class="category-chain">
         
   <a href="/categories/Environment/" class="category-chain-item">Environment</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/03/15/Nginx/" target="_self">
-          Nginx
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/15/Nginx/" target="_self">
-        <div>
-          怀着复杂悲伤的心情写这篇文章顶着十分困倦的状态  Nginx是高性能的HTTP和反向代理web服务器，处理高并发能力十分强大，支持热部署，启动简单，可以做到不间断运行。
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-15 08:05" pubdate>
-              2025-03-15
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%89%8D%E5%90%8E%E7%AB%AF/" class="category-chain-item">前后端</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/03/14/%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA%E4%B8%8E%E9%83%A8%E7%BD%B2/" target="_self">
-          静态网站搭建与部署
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/14/%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA%E4%B8%8E%E9%83%A8%E7%BD%B2/" target="_self">
-        <div>
-          三更半夜了搁这儿学网站部署，不嘻嘻😡  1. 注册域名搭建静态网站之前，首先得有个网站域名  应该有了，此步略  2.创建BucketCI&#x2F;CD在项目中写一个.github/workflows/ci.yml文件  参考：GitHub Actions 进行前端自动化部署如何使用 GitHub Actions 实现前端项目的自动化部署到服务器 - 掘金
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-14 00:56" pubdate>
-              2025-03-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%89%8D%E5%90%8E%E7%AB%AF/" class="category-chain-item">前后端</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/03/10/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%AE%9E%E6%97%B6%E5%8F%8C%E5%90%91%E9%80%9A%E4%BF%A1/" target="_self">
-          前后端实时双向通信
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/10/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%AE%9E%E6%97%B6%E5%8F%8C%E5%90%91%E9%80%9A%E4%BF%A1/" target="_self">
-        <div>
-          本来想在 珞珈攻略6.0 这个项目中实现一下子，但想到可以用计算来代替，就算了（时间有限 使用vue3实现计时器和倒计时效果 - 知乎
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-10 02:02" pubdate>
-              2025-03-10
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%89%8D%E5%90%8E%E7%AB%AF/" class="category-chain-item">前后端</a>
   
   
 
