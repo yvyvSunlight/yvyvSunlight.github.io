@@ -21,25 +21,26 @@
   
     <meta name="description" content="GeekChallenge2024 write-up (复现)  pwn部分 ez_shellcode查保护no pie, no canary 64位小端 动态链接 逆向主函数： 1234567891011121314151617181920212223242526int __fastcall main(int argc, const char **argv, const char **envp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GeekChallenge2024_wp（复现）">
-<meta property="og:url" content="http://example.com/2025/07/02/GeekChallenge2024-wp%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89/index.html">
+<meta property="og:title" content="GeekChallenge2024_wp">
+<meta property="og:url" content="http://example.com/2025/07/02/GeekChallenge2024-wp/index.html">
 <meta property="og:site_name" content="yvyvSunlight">
 <meta property="og:description" content="GeekChallenge2024 write-up (复现)  pwn部分 ez_shellcode查保护no pie, no canary 64位小端 动态链接 逆向主函数： 1234567891011121314151617181920212223242526int __fastcall main(int argc, const char **argv, const char **envp">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2024/10/29/hello-world/e2024-wp%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89/file-20250702001655102.png">
-<meta property="og:image" content="http://example.com/2024/10/29/hello-world/e2024-wp%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89/file-20250702001803623.png">
-<meta property="og:image" content="http://example.com/2024/10/29/hello-world/e2024-wp%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89/file-20250702012257850.png">
-<meta property="og:image" content="http://example.com/2024/10/29/hello-world/e2024-wp%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89/file-20250702090617688.png">
-<meta property="og:image" content="http://example.com/2024/10/29/hello-world/e2024-wp%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89/file-20250702120152264.png">
+<meta property="og:image" content="http://example.com/2024/10/29/hello-world/e2024-wp/file-20250702001655102.png">
+<meta property="og:image" content="http://example.com/2024/10/29/hello-world/e2024-wp/file-20250702001803623.png">
+<meta property="og:image" content="http://example.com/2024/10/29/hello-world/e2024-wp/file-20250702012257850.png">
+<meta property="og:image" content="http://example.com/2024/10/29/hello-world/e2024-wp/file-20250702090617688.png">
+<meta property="og:image" content="http://example.com/2024/10/29/hello-world/e2024-wp/file-20250702120152264.png">
+<meta property="og:image" content="http://example.com/2024/10/29/hello-world/e2024-wp/file-20250703021124633.png">
 <meta property="article:published_time" content="2025-07-01T16:11:19.000Z">
-<meta property="article:modified_time" content="2025-07-02T06:32:19.996Z">
+<meta property="article:modified_time" content="2025-07-02T18:11:37.487Z">
 <meta property="article:author" content="yvyvSunlight">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2024/10/29/hello-world/e2024-wp%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89/file-20250702001655102.png">
+<meta name="twitter:image" content="http://example.com/2024/10/29/hello-world/e2024-wp/file-20250702001655102.png">
   
   
   
-  <title>GeekChallenge2024_wp（复现） - yvyvSunlight</title>
+  <title>GeekChallenge2024_wp - yvyvSunlight</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -205,7 +206,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="GeekChallenge2024_wp（复现）"></span>
+            <span id="subtitle" data-typed-text="GeekChallenge2024_wp"></span>
           
         </div>
 
@@ -276,7 +277,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">GeekChallenge2024_wp（复现）</h1>
+            <h1 id="seo-header">GeekChallenge2024_wp</h1>
             
             
               <div class="markdown-body">
@@ -285,8 +286,8 @@
 <p>GeekChallenge2024 write-up (复现)</p>
 </blockquote>
 <p>pwn部分</p>
-<h1 id="ez-shellcode"><a href="#ez-shellcode" class="headerlink" title="ez_shellcode"></a>ez_shellcode</h1><p>查保护<br><img src="/2024/10/29/hello-world/e2024-wp%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89/file-20250702001655102.png" srcset="/img/loading.gif" lazyload><br>no pie, no canary</p>
-<p><img src="/2024/10/29/hello-world/e2024-wp%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89/file-20250702001803623.png" srcset="/img/loading.gif" lazyload><br>64位小端 动态链接</p>
+<h1 id="ez-shellcode"><a href="#ez-shellcode" class="headerlink" title="ez_shellcode"></a>ez_shellcode</h1><p>查保护<br><img src="/2024/10/29/hello-world/e2024-wp/file-20250702001655102.png" srcset="/img/loading.gif" lazyload><br>no pie, no canary</p>
+<p><img src="/2024/10/29/hello-world/e2024-wp/file-20250702001803623.png" srcset="/img/loading.gif" lazyload><br>64位小端 动态链接</p>
 <p>逆向主函数：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> __fastcall <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">const</span> <span class="hljs-type">char</span> **argv, <span class="hljs-type">const</span> <span class="hljs-type">char</span> **envp)</span><br>&#123;<br>  <span class="hljs-type">char</span> name[<span class="hljs-number">8</span>]; <span class="hljs-comment">// [rsp+8h] [rbp-18h] BYREF</span><br>  <span class="hljs-type">void</span> *p;      <span class="hljs-comment">// [rsp+10h] [rbp-10h]</span><br>  <span class="hljs-type">size_t</span> len;   <span class="hljs-comment">// [rsp+18h] [rbp-8h] 申请的内存区域长度</span><br><br>  init(argc, argv, envp);                       <span class="hljs-comment">// 初始化缓冲区 3个都是 0 2 0 无缓冲模式</span><br>  len = sysconf(<span class="hljs-number">30</span>);                            <span class="hljs-comment">// 系统物理内存的页数</span><br>  p = mmap(<span class="hljs-number">0LL</span>, len, <span class="hljs-number">3</span>, <span class="hljs-number">34</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0LL</span>);           <span class="hljs-comment">// 申请内存</span><br>  <span class="hljs-keyword">if</span> ( p == (<span class="hljs-type">void</span> *)<span class="hljs-number">-1LL</span> )<br>  &#123;<br>    perror(<span class="hljs-string">&quot;mmap&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>  &#125;<br>  <span class="hljs-keyword">else</span><br>  &#123;<br>    shellcode = p;                              <span class="hljs-comment">// 指针 -&gt; 申请的内存</span><br>    <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;Hello!!!&quot;</span>);<br>    <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;do you know shellcode?&quot;</span>);<br>    <span class="hljs-built_in">memset</span>(shellcode, <span class="hljs-number">144</span>, <span class="hljs-number">0x1F4</span>uLL);           <span class="hljs-comment">// 申请内存区域赋值</span><br>    read(<span class="hljs-number">0</span>, shellcode, <span class="hljs-number">0x190</span>uLL);               <span class="hljs-comment">// 申请内存区域读入</span><br>    <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;please input your name:&quot;</span>);<br>    gets(name);                                 <span class="hljs-comment">// 向栈中读入数据 gets函数 可以栈溢出</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -297,7 +298,7 @@
 <li>第一次读入申请的内存 可以写入shellcode</li>
 <li>第二次读入栈         可以栈溢出</li>
 </ol>
-<p>在程序中发现了<code>gift()</code>函数：<br><img src="/2024/10/29/hello-world/e2024-wp%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89/file-20250702012257850.png" srcset="/img/loading.gif" lazyload><br>将申请内存的执行权限改为 <strong>仅可执行</strong><br>该函数没有被引用过</p>
+<p>在程序中发现了<code>gift()</code>函数：<br><img src="/2024/10/29/hello-world/e2024-wp/file-20250702012257850.png" srcset="/img/loading.gif" lazyload><br>将申请内存的执行权限改为 <strong>仅可执行</strong><br>该函数没有被引用过</p>
 <p>根据这些程序信息：</p>
 <ul>
 <li>可以在内存区域写入</li>
@@ -315,7 +316,7 @@
 
 
 <hr>
-<h1 id="简单的签到题"><a href="#简单的签到题" class="headerlink" title="简单的签到题"></a>简单的签到题</h1><p><img src="/2024/10/29/hello-world/e2024-wp%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89/file-20250702090617688.png" srcset="/img/loading.gif" lazyload><br>64位小端 no pie no canary</p>
+<h1 id="简单的签到题"><a href="#简单的签到题" class="headerlink" title="简单的签到题"></a>简单的签到题</h1><p><img src="/2024/10/29/hello-world/e2024-wp/file-20250702090617688.png" srcset="/img/loading.gif" lazyload><br>64位小端 no pie no canary</p>
 <p>逆向：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> __fastcall <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">const</span> <span class="hljs-type">char</span> **argv, <span class="hljs-type">const</span> <span class="hljs-type">char</span> **envp)</span><br>&#123;<br>  init(argc, argv, envp);<br>  welcome();<br>  math1();<br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -333,7 +334,8 @@
 
 
 <hr>
-<h1 id="000000"><a href="#000000" class="headerlink" title="000000"></a>000000</h1><p><img src="/2024/10/29/hello-world/e2024-wp%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89/file-20250702120152264.png" srcset="/img/loading.gif" lazyload><br>64位小端  pie canary</p>
+<h1 id="000000"><a href="#000000" class="headerlink" title="000000"></a>000000</h1><p><img src="/2024/10/29/hello-world/e2024-wp/file-20250702120152264.png" srcset="/img/loading.gif" lazyload><br>64位小端  pie canary</p>
+<p><img src="/2024/10/29/hello-world/e2024-wp/file-20250703021124633.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
@@ -372,8 +374,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>GeekChallenge2024_wp（复现）</div>
-      <div>http://example.com/2025/07/02/GeekChallenge2024-wp（复现）/</div>
+      <div>GeekChallenge2024_wp</div>
+      <div>http://example.com/2025/07/02/GeekChallenge2024-wp/</div>
     </div>
     <div class="license-meta">
       
